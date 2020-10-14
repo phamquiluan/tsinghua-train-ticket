@@ -886,6 +886,10 @@ spec:
       - env:
         - name: COLLECTOR_ZIPKIN_HTTP_PORT
           value: "9411"
+        - name: SPAN_STORAGE_TYPE
+          value: "elasticsearch"
+        - name: ES_SERVER_URLS
+          value: "http://elastic:6Kvg9T7B7CW7l831H87WZBDk@es-jaeger-es-http:9200"
         image: jaegertracing/all-in-one
         name: jaeger
         ports:

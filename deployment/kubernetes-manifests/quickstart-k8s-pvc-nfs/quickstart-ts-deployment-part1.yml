@@ -1,4 +1,4 @@
-# NOTE: Before running, need to create <YOUR-NFS-DATA-PATH>/pv-1g-{n} at <YOUR-NFS-SERVER>, otherwise
+# NOTE: Before running, need to create </srv>/pv-1g-{n} at train-ticket1, otherwise
 # NFS will fail to mount with return code 32.
 
 # PVs
@@ -15,8 +15,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-1
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-1
+    server: train-ticket1
 
 ---
 
@@ -32,8 +32,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-2
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-2
+    server: train-ticket1
 
 ---
 
@@ -49,8 +49,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-3
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-3
+    server: train-ticket1
 
 ---
 
@@ -66,8 +66,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-4
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-4
+    server: train-ticket1
 
 ---
 
@@ -83,8 +83,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-5
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-5
+    server: train-ticket1
 
 ---
 
@@ -100,8 +100,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-6
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-6
+    server: train-ticket1
 
 ---
 
@@ -117,8 +117,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-7
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-7
+    server: train-ticket1
 
 ---
 
@@ -134,8 +134,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-8
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-8
+    server: train-ticket1
 
 ---
 
@@ -151,8 +151,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-9
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-9
+    server: train-ticket1
 
 ---
 
@@ -168,8 +168,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-10
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-10
+    server: train-ticket1
 
 ---
 
@@ -185,8 +185,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-11
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-11
+    server: train-ticket1
 
 ---
 
@@ -202,8 +202,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-12
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-12
+    server: train-ticket1
 
 ---
 
@@ -219,8 +219,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-13
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-13
+    server: train-ticket1
 
 ---
 
@@ -236,8 +236,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-14
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-14
+    server: train-ticket1
 
 ---
 
@@ -253,8 +253,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-15
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-15
+    server: train-ticket1
 
 ---
 
@@ -270,8 +270,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-16
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-16
+    server: train-ticket1
 
 ---
 
@@ -287,8 +287,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-17
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-17
+    server: train-ticket1
 
 ---
 
@@ -304,8 +304,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-18
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-18
+    server: train-ticket1
 
 ---
 
@@ -321,8 +321,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-19
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-19
+    server: train-ticket1
 
 ---
 
@@ -338,8 +338,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-20
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-20
+    server: train-ticket1
 
 ---
 
@@ -355,8 +355,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-21
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-21
+    server: train-ticket1
 
 ---
 
@@ -372,11 +372,10 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: nfs
   nfs:
-    path: YOUR-NFS-DATA-PATH/pv-1g-22
-    server: <YOUR-NFS-SERVER>
+    path: /srv/pv-1g-22
+    server: train-ticket1
 
 ---
-
 # PVCs
 
 apiVersion: v1
@@ -689,8 +688,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -723,8 +722,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -757,8 +756,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -791,8 +790,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -825,8 +824,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -859,8 +858,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -893,8 +892,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -927,8 +926,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -961,8 +960,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -995,8 +994,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1029,8 +1028,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1063,8 +1062,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1097,8 +1096,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1131,8 +1130,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1165,8 +1164,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1199,8 +1198,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1233,8 +1232,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1271,8 +1270,8 @@ spec:
         - containerPort: 3306
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mysql-persistent-storage
             mountPath: /var/lib/mysql
@@ -1305,8 +1304,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1339,8 +1338,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1373,8 +1372,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1407,8 +1406,8 @@ spec:
         - containerPort: 27017
         resources:
           requests:
-            cpu: 150m
-            memory: 200Mi
+            cpu: 1000m
+            memory: 1000Mi
         volumeMounts:
           - name: mongo-persistent-storage
             mountPath: /data/db
@@ -1679,158 +1678,169 @@ spec:
    app: ts-food-mongo
 
 ---
-# Jaeger Deployment and Service.
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jaeger
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-spec:
-  selector:
-    matchLabels:
-      app: jaeger
-  replicas: 1
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: jaeger
-        app.kubernetes.io/name: jaeger
-        app.kubernetes.io/component: all-in-one
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "16686"
-    spec:
-      containers:
-      - env:
-        - name: COLLECTOR_ZIPKIN_HTTP_PORT
-          value: "9411"
-        image: jaegertracing/all-in-one
-        name: jaeger
-        ports:
-          - containerPort: 5775
-            protocol: UDP
-          - containerPort: 6831
-            protocol: UDP
-          - containerPort: 6832
-            protocol: UDP
-          - containerPort: 5778
-            protocol: TCP
-          - containerPort: 16686
-            protocol: TCP
-          - containerPort: 9411
-            protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: "/"
-            port: 14269
-          initialDelaySeconds: 5
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger-query
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: query
-spec:
-  type: NodePort
-  ports:
-    - name: query-http
-      port: 16686
-      protocol: TCP
-      nodePort: 32688
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger-collector
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: collector
-spec:
-  ports:
-    - name: jaeger-collector-tchannel
-      port: 14267
-      protocol: TCP
-      targetPort: 14267
-    - name: jaeger-collector-http
-      port: 14268
-      protocol: TCP
-      targetPort: 14268
-    - name: jaeger-collector-zipkin
-      port: 9411
-      protocol: TCP
-      targetPort: 9411
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-  type: ClusterIP
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: agent
-spec:
-  ports:
-    - name: agent-zipkin-thrift
-      port: 5775
-      protocol: UDP
-      targetPort: 5775
-    - name: agent-compact
-      port: 6831
-      protocol: UDP
-      targetPort: 6831
-    - name: agent-binary
-      port: 6832
-      protocol: UDP
-      targetPort: 6832
-    - name: agent-config
-      port: 5778
-      protocol: TCP
-      targetPort: 5778
-  clusterIP: None
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: zipkin
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: zipkin
-spec:
-  ports:
-    - name: jaeger-collector-zipkin
-      port: 9411
-      protocol: TCP
-      targetPort: 9411
-  clusterIP: None
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
+# # Jaeger Deployment and Service.
+# 
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: jaeger
+#   labels:
+#     app: jaeger
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: all-in-one
+# spec:
+#   selector:
+#     matchLabels:
+#       app: jaeger
+#   replicas: 1
+#   strategy:
+#     type: Recreate
+#   template:
+#     metadata:
+#       labels:
+#         app: jaeger
+#         app.kubernetes.io/name: jaeger
+#         app.kubernetes.io/component: all-in-one
+#       annotations:
+#         prometheus.io/scrape: "true"
+#         prometheus.io/port: "16686"
+#     spec:
+#       containers:
+#       - env:
+#         - name: COLLECTOR_ZIPKIN_HTTP_PORT
+#           value: "9411"
+#         - name: SPAN_STORAGE_TYPE
+#           value: "elasticsearch"
+#         - name: ES_SERVER_URLS
+#           value: "http://es-jaeger-es-http:9200"
+#         - name: ES_USERNAME
+#           value: "elastic"
+#         - name: ES_PASSWORD
+#           valueFrom:
+#             secretKeyRef:
+#               name: es-jaeger-es-elastic-user
+#               key: elastic
+#         image: jaegertracing/all-in-one
+#         name: jaeger
+#         ports:
+#           - containerPort: 5775
+#             protocol: UDP
+#           - containerPort: 6831
+#             protocol: UDP
+#           - containerPort: 6832
+#             protocol: UDP
+#           - containerPort: 5778
+#             protocol: TCP
+#           - containerPort: 16686
+#             protocol: TCP
+#           - containerPort: 9411
+#             protocol: TCP
+#         readinessProbe:
+#           httpGet:
+#             path: "/"
+#             port: 14269
+#           initialDelaySeconds: 5
+# 
+# ---
+# 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jaeger-query
+#   labels:
+#     app: jaeger
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: query
+# spec:
+#   type: NodePort
+#   ports:
+#     - name: query-http
+#       port: 16686
+#       protocol: TCP
+#       nodePort: 32688
+#   selector:
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: all-in-one
+# 
+# ---
+# 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jaeger-collector
+#   labels:
+#     app: jaeger
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: collector
+# spec:
+#   ports:
+#     - name: jaeger-collector-tchannel
+#       port: 14267
+#       protocol: TCP
+#       targetPort: 14267
+#     - name: jaeger-collector-http
+#       port: 14268
+#       protocol: TCP
+#       targetPort: 14268
+#     - name: jaeger-collector-zipkin
+#       port: 9411
+#       protocol: TCP
+#       targetPort: 9411
+#   selector:
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: all-in-one
+#   type: ClusterIP
+# 
+# ---
+# 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jaeger
+#   labels:
+#     app: jaeger
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: agent
+# spec:
+#   ports:
+#     - name: agent-zipkin-thrift
+#       port: 5775
+#       protocol: UDP
+#       targetPort: 5775
+#     - name: agent-compact
+#       port: 6831
+#       protocol: UDP
+#       targetPort: 6831
+#     - name: agent-binary
+#       port: 6832
+#       protocol: UDP
+#       targetPort: 6832
+#     - name: agent-config
+#       port: 5778
+#       protocol: TCP
+#       targetPort: 5778
+#   clusterIP: None
+#   selector:
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: all-in-one
+# 
+# ---
+# 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: zipkin
+#   labels:
+#     app: jaeger
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: zipkin
+# spec:
+#   ports:
+#     - name: jaeger-collector-zipkin
+#       port: 9411
+#       protocol: TCP
+#       targetPort: 9411
+#   clusterIP: None
+#   selector:
+#     app.kubernetes.io/name: jaeger
+#     app.kubernetes.io/component: all-in-one
