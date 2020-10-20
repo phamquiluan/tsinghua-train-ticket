@@ -52,6 +52,8 @@ spec:
     metadata:
       labels:
         app: ts-admin-basic-info-service
+    annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-basic-info-service
@@ -72,6 +74,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5   
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18767
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 
@@ -88,6 +98,8 @@ spec:
     metadata:
       labels:
         app: ts-admin-order-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-order-service
@@ -108,6 +120,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16112
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -123,6 +143,8 @@ spec:
     metadata:
       labels:
         app: ts-admin-route-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-route-service
@@ -143,6 +165,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16113
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -158,6 +188,8 @@ spec:
     metadata:
       labels:
         app: ts-admin-travel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-travel-service
@@ -178,6 +210,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16114
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -193,6 +233,8 @@ spec:
     metadata:
       labels:
         app: ts-admin-user-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-user-service
@@ -213,6 +255,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16115
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -228,6 +278,8 @@ spec:
     metadata:
       labels:
         app: ts-assurance-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-assurance-service
@@ -248,6 +300,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18888
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -258,11 +318,13 @@ spec:
   selector:
     matchLabels:
       app: ts-basic-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-basic-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-basic-service
@@ -283,6 +345,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15680
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -298,6 +368,8 @@ spec:
     metadata:
       labels:
         app: ts-cancel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-cancel-service
@@ -318,6 +390,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18885
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -333,6 +413,8 @@ spec:
     metadata:
       labels:
         app: ts-config-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-config-service
@@ -353,6 +435,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15679
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -368,6 +458,8 @@ spec:
     metadata:
       labels:
         app: ts-consign-price-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-consign-price-service
@@ -388,6 +480,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16110
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -403,6 +503,8 @@ spec:
     metadata:
       labels:
         app: ts-consign-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-consign-service
@@ -438,6 +540,8 @@ spec:
     metadata:
       labels:
         app: ts-contacts-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-contacts-service
@@ -458,6 +562,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12347
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -473,6 +585,8 @@ spec:
     metadata:
       labels:
         app: ts-execute-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-execute-service
@@ -493,6 +607,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12386
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -508,6 +630,8 @@ spec:
     metadata:
       labels:
         app: ts-food-map-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-food-map-service
@@ -528,6 +652,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18855
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -543,6 +675,8 @@ spec:
     metadata:
       labels:
         app: ts-food-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-food-service
@@ -563,6 +697,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18856
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -578,6 +720,8 @@ spec:
     metadata:
       labels:
         app: ts-inside-payment-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-inside-payment-service
@@ -598,6 +742,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18673
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -613,6 +765,8 @@ spec:
     metadata:
       labels:
         app: ts-auth-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-auth-service
@@ -633,6 +787,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12340
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -648,6 +810,8 @@ spec:
     metadata:
       labels:
         app: ts-news-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-news-service
@@ -668,6 +832,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12862
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -683,6 +855,8 @@ spec:
     metadata:
       labels:
         app: ts-notification-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-notification-service
@@ -703,6 +877,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 17853
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -718,6 +900,8 @@ spec:
     metadata:
       labels:
         app: ts-order-other-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-order-other-service
@@ -738,6 +922,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12032
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -753,6 +945,8 @@ spec:
     metadata:
       labels:
         app: ts-order-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-order-service
@@ -762,11 +956,11 @@ spec:
         - containerPort: 12031
         resources:
           requests:
+            cpu: 500m
+            memory: 500Mi
+          limits:
             cpu: 1000m
             memory: 1000Mi
-          limits:
-            cpu: 2000m
-            memory: 2000Mi
         readinessProbe:
           tcpSocket:
             port: 12031
@@ -774,9 +968,10 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 5
         livenessProbe:
-          tcpSocket:
+          httpGet:
+            path: /swagger-ui.html
             port: 12031
-          initialDelaySeconds: 160
+          initialDelaySeconds: 300
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
@@ -795,6 +990,8 @@ spec:
     metadata:
       labels:
         app: ts-payment-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-payment-service
@@ -815,6 +1012,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 19001
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -830,6 +1035,8 @@ spec:
     metadata:
       labels:
         app: ts-preserve-other-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-preserve-other-service
@@ -850,6 +1057,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14569
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -865,6 +1080,8 @@ spec:
     metadata:
       labels:
         app: ts-preserve-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-preserve-service
@@ -885,6 +1102,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14568
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -900,6 +1125,8 @@ spec:
     metadata:
       labels:
         app: ts-price-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-price-service
@@ -920,6 +1147,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15679
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -935,6 +1170,8 @@ spec:
     metadata:
       labels:
         app: ts-rebook-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-rebook-service
@@ -955,6 +1192,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18886
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -970,6 +1215,8 @@ spec:
     metadata:
       labels:
         app: ts-route-plan-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-route-plan-service
@@ -990,6 +1237,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14578
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1005,6 +1260,8 @@ spec:
     metadata:
       labels:
         app: ts-route-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-route-service
@@ -1025,6 +1282,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 11178
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1040,6 +1305,8 @@ spec:
     metadata:
       labels:
         app: ts-seat-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-seat-service
@@ -1060,6 +1327,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18898
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1075,6 +1350,8 @@ spec:
     metadata:
       labels:
         app: ts-security-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-security-service
@@ -1095,6 +1372,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 11188
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1110,6 +1395,8 @@ spec:
     metadata:
       labels:
         app: ts-user-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-user-service
@@ -1130,6 +1417,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12342
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1140,11 +1435,13 @@ spec:
   selector:
     matchLabels:
       app: ts-station-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-station-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-station-service
@@ -1165,6 +1462,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12345
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1180,6 +1485,8 @@ spec:
     metadata:
       labels:
         app: ts-ticket-office-service 
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-ticket-office-service
@@ -1200,6 +1507,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16108
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1215,6 +1530,8 @@ spec:
     metadata:
       labels:
         app: ts-ticketinfo-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-ticketinfo-service
@@ -1235,6 +1552,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15681
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1250,6 +1575,8 @@ spec:
     metadata:
       labels:
         app: ts-train-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-train-service
@@ -1270,6 +1597,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14567
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1285,6 +1620,8 @@ spec:
     metadata:
       labels:
         app: ts-travel2-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel2-service
@@ -1305,6 +1642,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16346
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1320,6 +1665,8 @@ spec:
     metadata:
       labels:
         app: ts-travel-plan-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel-plan-service
@@ -1340,6 +1687,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14322
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1350,11 +1705,13 @@ spec:
   selector:
     matchLabels:
       app: ts-travel-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-travel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel-service
@@ -1375,6 +1732,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12346
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1390,6 +1755,8 @@ spec:
     metadata:
       labels:
         app: ts-verification-code-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-verification-code-service
@@ -1410,6 +1777,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15678
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1425,6 +1800,8 @@ spec:
     metadata:
       labels:
         app: ts-voucher-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-voucher-service
@@ -1445,6 +1822,14 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5 
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16101
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: v1
@@ -1530,6 +1915,7 @@ kind: Service
 metadata:
   name: ts-basic-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 15680
@@ -1857,6 +2243,7 @@ kind: Service
 metadata:
   name: ts-station-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 12345
@@ -1883,6 +2270,7 @@ kind: Service
 metadata:
   name: ts-ticketinfo-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 15681
@@ -1935,6 +2323,7 @@ kind: Service
 metadata:
   name: ts-travel-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 12346
