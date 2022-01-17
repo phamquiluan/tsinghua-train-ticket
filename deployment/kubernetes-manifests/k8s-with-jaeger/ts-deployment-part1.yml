@@ -890,13 +890,13 @@ spec:
           value: "elasticsearch"
         - name: ES_SERVER_URLS
           value: "http://es-jaeger-es-http:9200"
-         - name: ES_USERNAME
-           value: "elastic"
-         - name: ES_PASSWORD
-           valueFrom:
-             secretKeyRef:
-               name: es-jaeger-es-elastic-user
-               key: elastic
+        - name: ES_USERNAME
+          value: "elastic"
+        - name: ES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: es-jaeger-es-elastic-user
+              key: elastic
         image: jaegertracing/all-in-one
         name: jaeger
         ports:

@@ -52,26 +52,37 @@ spec:
     metadata:
       labels:
         app: ts-admin-basic-info-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-basic-info-service
-        image: docker.peidan.me/lizytalk/ts-admin-basic-info-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-admin-basic-info-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18767
         resources:
           requests:
-            cpu: 50m
+            cpu: 500m
             memory: 100Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18767
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5   
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:18767/adminbasic/contacts
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 
@@ -88,26 +99,37 @@ spec:
     metadata:
       labels:
         app: ts-admin-order-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-order-service
-        image: docker.peidan.me/lizytalk/ts-admin-order-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-admin-order-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16112
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16112
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16112/adminorder
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -123,26 +145,37 @@ spec:
     metadata:
       labels:
         app: ts-admin-route-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-route-service
-        image: docker.peidan.me/lizytalk/ts-admin-route-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-admin-route-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16113
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16113
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16113/api/v1/adminrouteservice/adminroute
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -158,26 +191,37 @@ spec:
     metadata:
       labels:
         app: ts-admin-travel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-travel-service
-        image: docker.peidan.me/lizytalk/ts-admin-travel-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-admin-travel-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16114
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16114
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16114/api/v1/admintravelservice/admintravel
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -193,26 +237,37 @@ spec:
     metadata:
       labels:
         app: ts-admin-user-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-admin-user-service
-        image: docker.peidan.me/lizytalk/ts-admin-user-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-admin-user-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16115
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16115
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16115/api/v1/adminuserservice/users
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -228,26 +283,37 @@ spec:
     metadata:
       labels:
         app: ts-assurance-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-assurance-service
-        image: docker.peidan.me/lizytalk/ts-assurance-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-assurance-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18888
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18888
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:18888/api/v1/assuranceservice/assurances
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -258,31 +324,41 @@ spec:
   selector:
     matchLabels:
       app: ts-basic-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-basic-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-basic-service
-        image: docker.peidan.me/lizytalk/ts-basic-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-basic-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 15680
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 15680
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15680
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -298,26 +374,36 @@ spec:
     metadata:
       labels:
         app: ts-cancel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-cancel-service
-        image: docker.peidan.me/lizytalk/ts-cancel-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-cancel-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18885
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18885
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18885
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -333,26 +419,36 @@ spec:
     metadata:
       labels:
         app: ts-config-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-config-service
-        image: docker.peidan.me/lizytalk/ts-config-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-config-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 15679
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 15679
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15679
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -368,26 +464,36 @@ spec:
     metadata:
       labels:
         app: ts-consign-price-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-consign-price-service
-        image: docker.peidan.me/lizytalk/ts-consign-price-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-consign-price-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16110
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16110
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16110
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -403,20 +509,22 @@ spec:
     metadata:
       labels:
         app: ts-consign-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-consign-service
-        image: docker.peidan.me/lizytalk/ts-consign-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-consign-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16111
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16111
@@ -438,26 +546,36 @@ spec:
     metadata:
       labels:
         app: ts-contacts-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-contacts-service
-        image: docker.peidan.me/lizytalk/ts-contacts-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-contacts-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12347
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12347
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12347
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -473,26 +591,36 @@ spec:
     metadata:
       labels:
         app: ts-execute-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-execute-service
-        image: docker.peidan.me/lizytalk/ts-execute-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-execute-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12386
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12386
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12386
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -508,26 +636,36 @@ spec:
     metadata:
       labels:
         app: ts-food-map-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-food-map-service
-        image: docker.peidan.me/lizytalk/ts-food-map-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-food-map-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18855
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18855
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18855
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -543,26 +681,36 @@ spec:
     metadata:
       labels:
         app: ts-food-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-food-service
-        image: docker.peidan.me/lizytalk/ts-food-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-food-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18856
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18856
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18856
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -578,26 +726,36 @@ spec:
     metadata:
       labels:
         app: ts-inside-payment-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-inside-payment-service
-        image: docker.peidan.me/lizytalk/ts-inside-payment-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-inside-payment-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18673
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18673
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18673
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -613,26 +771,36 @@ spec:
     metadata:
       labels:
         app: ts-auth-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-auth-service
-        image: docker.peidan.me/lizytalk/ts-auth-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-auth-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12340
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12340
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12340
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -648,26 +816,36 @@ spec:
     metadata:
       labels:
         app: ts-news-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-news-service
-        image: docker.peidan.me/lizytalk/ts-news-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-news-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12862
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12862
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12862
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -683,26 +861,36 @@ spec:
     metadata:
       labels:
         app: ts-notification-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-notification-service
-        image: docker.peidan.me/lizytalk/ts-notification-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-notification-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 17853
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 17853
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 17853
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -718,26 +906,36 @@ spec:
     metadata:
       labels:
         app: ts-order-other-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-order-other-service
-        image: docker.peidan.me/lizytalk/ts-order-other-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-order-other-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12032
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12032
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12032
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -748,31 +946,41 @@ spec:
   selector:
     matchLabels:
       app: ts-order-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-order-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-order-service
-        image: docker.peidan.me/lizytalk/ts-order-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-order-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12031
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12031
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/v1/orderservice/order/Wed%20Nov%2004%2008:00:00%20CST%202020/D1345
+            port: 12031
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -788,26 +996,36 @@ spec:
     metadata:
       labels:
         app: ts-payment-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-payment-service
-        image: docker.peidan.me/lizytalk/ts-payment-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-payment-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 19001
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 19001
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 19001
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -823,26 +1041,36 @@ spec:
     metadata:
       labels:
         app: ts-preserve-other-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-preserve-other-service
-        image: docker.peidan.me/lizytalk/ts-preserve-other-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-preserve-other-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 14569
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 14569
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14569
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -858,26 +1086,36 @@ spec:
     metadata:
       labels:
         app: ts-preserve-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-preserve-service
-        image: docker.peidan.me/lizytalk/ts-preserve-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-preserve-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 14568
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 14568
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14568
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -893,26 +1131,36 @@ spec:
     metadata:
       labels:
         app: ts-price-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-price-service
-        image: docker.peidan.me/lizytalk/ts-price-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-price-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16579
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16579
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/v1/priceservice/prices
+            port: 16579
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -928,26 +1176,36 @@ spec:
     metadata:
       labels:
         app: ts-rebook-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-rebook-service
-        image: docker.peidan.me/lizytalk/ts-rebook-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-rebook-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18886
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18886
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18886
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -963,26 +1221,36 @@ spec:
     metadata:
       labels:
         app: ts-route-plan-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-route-plan-service
-        image: docker.peidan.me/lizytalk/ts-route-plan-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-route-plan-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 14578
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 14578
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14578
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -998,26 +1266,36 @@ spec:
     metadata:
       labels:
         app: ts-route-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-route-service
-        image: docker.peidan.me/lizytalk/ts-route-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-route-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 11178
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 11178
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 11178
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1033,26 +1311,36 @@ spec:
     metadata:
       labels:
         app: ts-seat-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-seat-service
-        image: docker.peidan.me/lizytalk/ts-seat-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-seat-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 18898
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 18898
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 18898
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1068,26 +1356,36 @@ spec:
     metadata:
       labels:
         app: ts-security-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-security-service
-        image: docker.peidan.me/lizytalk/ts-security-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-security-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 11188
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 11188
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 11188
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1103,26 +1401,36 @@ spec:
     metadata:
       labels:
         app: ts-user-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-user-service
-        image: docker.peidan.me/lizytalk/ts-user-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-user-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12342
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12342
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12342
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1133,31 +1441,41 @@ spec:
   selector:
     matchLabels:
       app: ts-station-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-station-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-station-service
-        image: docker.peidan.me/lizytalk/ts-station-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-station-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12345
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12345
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12345
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1172,27 +1490,38 @@ spec:
   template:
     metadata:
       labels:
-        app: ts-ticket-office-service 
+        app: ts-ticket-office-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-ticket-office-service
-        image: docker.peidan.me/lizytalk/ts-ticket-office-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-ticket-office-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16108
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16108
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16108/getRegionList
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1208,26 +1537,36 @@ spec:
     metadata:
       labels:
         app: ts-ticketinfo-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-ticketinfo-service
-        image: docker.peidan.me/lizytalk/ts-ticketinfo-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-ticketinfo-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 15681
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 15681
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 15681
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1243,26 +1582,36 @@ spec:
     metadata:
       labels:
         app: ts-train-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-train-service
-        image: docker.peidan.me/lizytalk/ts-train-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-train-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 14567
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 14567
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14567
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1278,26 +1627,36 @@ spec:
     metadata:
       labels:
         app: ts-travel2-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel2-service
-        image: docker.peidan.me/lizytalk/ts-travel2-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-travel2-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16346
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16346
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 16346
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1313,26 +1672,36 @@ spec:
     metadata:
       labels:
         app: ts-travel-plan-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel-plan-service
-        image: docker.peidan.me/lizytalk/ts-travel-plan-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-travel-plan-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 14322
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 14322
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 14322
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1343,31 +1712,41 @@ spec:
   selector:
     matchLabels:
       app: ts-travel-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: ts-travel-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-travel-service
-        image: docker.peidan.me/lizytalk/ts-travel-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-travel-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 12346
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 12346
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /swagger-ui.html
+            port: 12346
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1383,26 +1762,36 @@ spec:
     metadata:
       labels:
         app: ts-verification-code-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-verification-code-service
-        image: docker.peidan.me/lizytalk/ts-verification-code-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-verification-code-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 15678
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 15678
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/v1/verifycode/generate
+            port: 15678
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1418,26 +1807,37 @@ spec:
     metadata:
       labels:
         app: ts-voucher-service
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:
       - name: ts-voucher-service
-        image: docker.peidan.me/lizytalk/ts-voucher-service-with-jaeger:v1
+        image: docker.peidan.me/lizytalk/ts-voucher-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 16101
         resources:
           requests:
-            cpu: 50m
-            memory: 160Mi
+            cpu: 500m
+            memory: 1000Mi
           limits:
-            cpu: 200m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 1000Mi
         readinessProbe:
           tcpSocket:
             port: 16101
           initialDelaySeconds: 160
           periodSeconds: 10
-          timeoutSeconds: 5 
+          timeoutSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+              - curl
+              - http://localhost:16101/getVoucher
+          initialDelaySeconds: 300
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 30
 ---
 
 apiVersion: v1
@@ -1523,6 +1923,7 @@ kind: Service
 metadata:
   name: ts-basic-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 15680
@@ -1705,6 +2106,7 @@ kind: Service
 metadata:
   name: ts-order-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 12031
@@ -1849,6 +2251,7 @@ kind: Service
 metadata:
   name: ts-station-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 12345
@@ -1875,6 +2278,7 @@ kind: Service
 metadata:
   name: ts-ticketinfo-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 15681
@@ -1927,6 +2331,7 @@ kind: Service
 metadata:
   name: ts-travel-service
 spec:
+  type: LoadBalancer
   ports:
     - name: http
       port: 12346

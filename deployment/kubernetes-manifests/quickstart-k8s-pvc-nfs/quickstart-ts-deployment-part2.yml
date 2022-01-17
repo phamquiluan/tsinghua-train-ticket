@@ -52,7 +52,7 @@ spec:
     metadata:
       labels:
         app: ts-admin-basic-info-service
-    annotations:
+      annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
       containers:

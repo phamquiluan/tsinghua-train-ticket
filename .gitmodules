@@ -1,3 +1,0 @@
-[submodule "deployment/kubernetes-manifests/kube-prometheus"]
-	path = deployment/kubernetes-manifests/kube-prometheus
-	url = https://github.com/prometheus-operator/kube-prometheus.git
