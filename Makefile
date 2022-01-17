@@ -1,6 +1,6 @@
 # Codewisdom Train-Ticket system
 
-Repo=codewisdom
+Repo=docker.peidan.me/lizytalk
 Tag=latest
 
 # build image
