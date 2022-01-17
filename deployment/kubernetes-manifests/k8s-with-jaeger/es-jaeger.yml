@@ -1,0 +1,86 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: data-consul-pv3
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/data-consul-pv3
+    server: lzy-k8s-3.cluster.peidan.me
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: data-consul-pv4
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/data-consul-pv4
+    server: lzy-k8s-4.cluster.peidan.me
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: data-consul-pv5
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/data-consul-pv5
+    server: lzy-k8s-5.cluster.peidan.me
+
+---
+
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: es-jaeger
+spec:
+  version: 7.5.2
+  http:
+    service:
+      spec:
+        type: LoadBalancer
+    tls:
+      selfSignedCertificate:
+        disabled: true
+  nodeSets:
+  - name: default
+    count: 3
+    config:
+      node.master: true
+      node.data: true
+      node.ingest: true
+      node.store.allow_mmap: false
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 100Gi
+        storageClassName: nfs

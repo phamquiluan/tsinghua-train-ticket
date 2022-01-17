@@ -5,7 +5,7 @@ Tag=latest
 
 # build image
 .PHONY: build
-build: clean-image package build-image
+build: package build-image
 
 .PHONY: package
 package:
