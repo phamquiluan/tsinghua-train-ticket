@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: ts-user-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-user-mongo
@@ -37,6 +39,8 @@ spec:
     metadata:
       labels:
         app: ts-auth-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-auth-mongo
@@ -63,6 +67,8 @@ spec:
     metadata:
       labels:
         app: ts-route-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-route-mongo
@@ -90,6 +96,8 @@ spec:
     metadata:
       labels:
         app: ts-contacts-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-contacts-mongo
@@ -117,6 +125,8 @@ spec:
     metadata:
       labels:
         app: ts-order-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-order-mongo
@@ -144,6 +154,8 @@ spec:
     metadata:
       labels:
         app: ts-order-other-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-order-other-mongo
@@ -171,6 +183,8 @@ spec:
     metadata:
       labels:
         app: ts-config-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-config-mongo
@@ -198,6 +212,8 @@ spec:
     metadata:
       labels:
         app: ts-station-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-station-mongo
@@ -225,6 +241,8 @@ spec:
     metadata:
       labels:
         app: ts-train-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-train-mongo
@@ -252,6 +270,8 @@ spec:
     metadata:
       labels:
         app: ts-travel-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-travel-mongo
@@ -279,6 +299,8 @@ spec:
     metadata:
       labels:
         app: ts-travel2-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-travel2-mongo
@@ -306,6 +328,8 @@ spec:
     metadata:
       labels:
         app: ts-price-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-price-mongo
@@ -333,6 +357,8 @@ spec:
     metadata:
       labels:
         app: ts-security-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-security-mongo
@@ -360,6 +386,8 @@ spec:
     metadata:
       labels:
         app: ts-inside-payment-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-inside-payment-mongo
@@ -387,6 +415,8 @@ spec:
     metadata:
       labels:
         app: ts-payment-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-payment-mongo
@@ -414,6 +444,8 @@ spec:
     metadata:
       labels:
         app: ts-assurance-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-assurance-mongo
@@ -441,6 +473,8 @@ spec:
     metadata:
       labels:
         app: ts-ticket-office-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-ticket-office-mongo
@@ -469,6 +503,8 @@ spec:
     metadata:
       labels:
         app: ts-voucher-mysql
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-voucher-mysql
@@ -500,6 +536,8 @@ spec:
     metadata:
       labels:
         app: ts-food-map-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-food-map-mongo
@@ -527,6 +565,8 @@ spec:
     metadata:
       labels:
         app: ts-consign-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-consign-mongo
@@ -554,6 +594,8 @@ spec:
     metadata:
       labels:
         app: ts-consign-price-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-consign-price-mongo
@@ -581,6 +623,8 @@ spec:
     metadata:
       labels:
         app: ts-food-mongo
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-food-mongo

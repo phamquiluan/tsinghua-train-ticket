@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: ts-ui-dashboard
+        online-service-system: train-ticket
+        injectable: "true"
     spec:
       containers:
       - name: ts-ui-dashboard
