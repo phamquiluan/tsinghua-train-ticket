@@ -1,0 +1,4 @@
+loguru
+pytesseract
+pillow
+selenium

@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bots
+  namespace: train-ticket-bot
+  labels:
+    app: bots
+spec:
+  clusterIP: None
+  selector:
+    app: bots
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bots
+  namespace: train-ticket-bot
+spec:
+  selector:
+    matchLabels:
+      app: bots # has to match .spec.template.metadata.labels
+  serviceName: "bots"
+  replicas: 4 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: bots # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: bots
+        image: docker.peidan.me/lizytalk/train-ticket-bot
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "200Mi"
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
+        imagePullPolicy: Always
+        command: ["python3"]
+        args: [
+            "bot.py", "--username", "$(USERNAME)", "--password", "bot",
+            "-d", "--executable-path", "/usr/bin/google-chrome"
+        ]
+        env:
+        - name: USERNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
