@@ -4,6 +4,7 @@ metadata:
   name: data-consul-pv3
   labels:
     type: local
+  namespace: istio-system
 spec:
   capacity:
     storage: 100Gi
@@ -22,6 +23,7 @@ metadata:
   name: data-consul-pv4
   labels:
     type: local
+  namespace: istio-system
 spec:
   capacity:
     storage: 100Gi
@@ -40,6 +42,7 @@ metadata:
   name: data-consul-pv5
   labels:
     type: local
+  namespace: istio-system
 spec:
   capacity:
     storage: 100Gi
@@ -57,6 +60,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: es-jaeger
+  namespace: istio-system
 spec:
   version: 7.5.2
   http:

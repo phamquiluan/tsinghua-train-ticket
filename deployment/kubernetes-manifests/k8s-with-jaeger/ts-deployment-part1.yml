@@ -642,6 +642,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-user-mongo 
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -653,6 +655,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-auth-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -664,6 +668,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-route-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -676,6 +682,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-contacts-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -688,6 +696,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-order-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -700,6 +710,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-order-other-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -712,6 +724,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-config-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -724,6 +738,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-station-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -736,6 +752,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-train-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -748,6 +766,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-travel-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -760,6 +780,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-travel2-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -772,6 +794,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-price-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -784,6 +808,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-security-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -796,6 +822,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-inside-payment-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -808,6 +836,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-payment-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -820,6 +850,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-assurance-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -832,6 +864,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-ticket-office-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -844,6 +878,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-voucher-mysql
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 3306
@@ -856,6 +892,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-food-map-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -868,6 +906,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-consign-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -880,6 +920,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-consign-price-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
@@ -892,176 +934,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ts-food-mongo
+  labels:
+    online-service-system: train-ticket
 spec:
   ports:
     - port: 27017
   selector:
    app: ts-food-mongo
-
----
-# Jaeger Deployment and Service.
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jaeger
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-spec:
-  selector:
-    matchLabels:
-      app: jaeger
-  replicas: 1
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: jaeger
-        app.kubernetes.io/name: jaeger
-        app.kubernetes.io/component: all-in-one
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "16686"
-    spec:
-      containers:
-      - env:
-        - name: COLLECTOR_ZIPKIN_HTTP_PORT
-          value: "9411"
-        - name: SPAN_STORAGE_TYPE
-          value: "elasticsearch"
-        - name: ES_SERVER_URLS
-          value: "http://es-jaeger-es-http:9200"
-        - name: ES_USERNAME
-          value: "elastic"
-        - name: ES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: es-jaeger-es-elastic-user
-              key: elastic
-        image: jaegertracing/all-in-one
-        name: jaeger
-        ports:
-          - containerPort: 5775
-            protocol: UDP
-          - containerPort: 6831
-            protocol: UDP
-          - containerPort: 6832
-            protocol: UDP
-          - containerPort: 5778
-            protocol: TCP
-          - containerPort: 16686
-            protocol: TCP
-          - containerPort: 9411
-            protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: "/"
-            port: 14269
-          initialDelaySeconds: 5
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger-query
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: query
-spec:
-  type: NodePort
-  ports:
-    - name: query-http
-      port: 16686
-      protocol: TCP
-      nodePort: 32688
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger-collector
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: collector
-spec:
-  ports:
-    - name: jaeger-collector-tchannel
-      port: 14267
-      protocol: TCP
-      targetPort: 14267
-    - name: jaeger-collector-http
-      port: 14268
-      protocol: TCP
-      targetPort: 14268
-    - name: jaeger-collector-zipkin
-      port: 9411
-      protocol: TCP
-      targetPort: 9411
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-  type: ClusterIP
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: jaeger
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: agent
-spec:
-  ports:
-    - name: agent-zipkin-thrift
-      port: 5775
-      protocol: UDP
-      targetPort: 5775
-    - name: agent-compact
-      port: 6831
-      protocol: UDP
-      targetPort: 6831
-    - name: agent-binary
-      port: 6832
-      protocol: UDP
-      targetPort: 6832
-    - name: agent-config
-      port: 5778
-      protocol: TCP
-      targetPort: 5778
-  clusterIP: None
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: zipkin
-  labels:
-    app: jaeger
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: zipkin
-spec:
-  ports:
-    - name: jaeger-collector-zipkin
-      port: 9411
-      protocol: TCP
-      targetPort: 9411
-  clusterIP: None
-  selector:
-    app.kubernetes.io/name: jaeger
-    app.kubernetes.io/component: all-in-one

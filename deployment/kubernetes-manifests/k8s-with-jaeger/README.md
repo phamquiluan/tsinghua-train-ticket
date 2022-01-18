@@ -1,9 +1,44 @@
-> TrainTicket with Jaeger
+## Install TS
 
-We provide a Tracing System based on [Jaeger](https://www.jaegertracing.io). 
+1. build images
+   ```bash
+   cd train-ticket  # the root directory of the project
+   make
+   ```
+   
+2. ```bash
+   kubectl apply -f es-jaeger.yml
+   ```
 
-After the deployment, you can visit the Jaeger Webpage at [http://[Node-IP]:32688](http://[Node-IP]:32688) to view traces in the system.
+4. apply the ts-deployment-part*.yml one by one
 
-![Jaeger](<https://raw.githubusercontent.com/FudanSELab/train-ticket/master/image/jaeger.png>)
+## Install Prometheus
 
-If you'd like to see the source code which uses Jaeger, it's in the [jaeger branch](https://github.com/FudanSELab/train-ticket/tree/jaeger).
+1. ``` bash
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo update
+   kubectl create namespace monitoring
+   helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
+   ```
+
+## Install Istio for Tracing
+
+1. Install Istio
+   ```bash
+   helm repo add istio https://istio-release.storage.googleapis.com/charts
+   helm repo update
+   kubectl create namespace istio-system
+   helm install -f istio-base.yml istio-base istio/base -n istio-system
+   helm install -f istiod.yml  istiod istio/istiod -n istio-system --wait
+   kubectl create namespace istio-ingress
+   kubectl label namespace istio-ingress istio-injection=enabled
+   helm install istio-ingress istio/gateway -n istio-ingress --wait
+   ```
+   
+2. enable injection
+   ```bash
+   kubectl label namespace tt istio-injection=enabled
+   kubectl delete pod -n tt -l online-service-system=train-ticket
+   kubectl describe pod -n tt  -l online-service-system=train-ticket
+   ```
+   
