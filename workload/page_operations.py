@@ -1,22 +1,20 @@
 import inspect
-import traceback
 import random
-from functools import lru_cache
-from typing import List, Callable, Dict
-from PIL import Image
-from tempfile import NamedTemporaryFile
-import pytesseract
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from multiprocessing import Process
-from loguru import logger
 import time
-from selenium import webdriver
+import traceback
+from tempfile import NamedTemporaryFile
+from typing import List, Callable, Dict
+
+import ddddocr
+from loguru import logger
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
+
+ocr = ddddocr.DdddOcr()
 
 
 class PageOperations:
@@ -51,6 +49,7 @@ class PageOperations:
                 parameters = inspect.signature(func).parameters
                 actual_kwargs = {key: kwargs.get(key) for key in kwargs.keys() if key in parameters}
                 return func(**actual_kwargs)
+
             PageOperations.operations[name] = func_wrapped
             PageOperations.operation_children_dict[name] = children
             return func
@@ -118,14 +117,17 @@ def login(driver, username, password, base_url):
 
         with NamedTemporaryFile("wb+", suffix=".png") as file:
             driver.find_element_by_id("flow_preserve_login_verification_code_img").screenshot(file.name)
-            image = Image.open(file).resize((60, 20))
-            vc_text = "".join([
-                pytesseract.image_to_string(
-                    image.crop((6 + 13 * i, 0, 6 + 13 * (i + 1), 20)), lang="eng",
-                    config=r"--psm 10 "
-                           "-c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                )[0] for i in range(4)
-            ])
+            file.seek(0)
+            vc_text = ocr.classification(file.read())
+            # image = Image.open(file).resize((60, 20))
+            # print("ddddocr: ", ocr.classification(image.tobytes()))
+            # vc_text = "".join([
+            #     pytesseract.image_to_string(
+            #         image.crop((6 + 13 * i, 0, 6 + 13 * (i + 1), 20)), lang="eng",
+            #         config=r"--psm 10 "
+            #                "-c tessedit_char_whitelist=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            #     )[0] for i in range(4)
+            # ])
             logger.debug(f"try verification code {vc_text}")
         vc_label = driver.find_element_by_id('flow_preserve_login_verification_code')
         vc_label.send_keys(' ')
@@ -237,8 +239,9 @@ def execute(driver):
     WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable((By.LINK_TEXT, 'Enter Station')),
                                    message='Timeout!!').click()
     time.sleep(0.5)
-    WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable((By.ID, 'enter_reserve_execute_order_button')),
-                                   message='Timeout!!').click()
+    WebDriverWait(driver, 5).until(
+        expected_conditions.element_to_be_clickable((By.ID, 'enter_reserve_execute_order_button')),
+        message='Timeout!!').click()
     deal_alert(driver, 5)
     deal_alert(driver, 5)
     time.sleep(0.5)
@@ -299,6 +302,7 @@ def isClassExist(driver, class_name):
     finally:
         return flag
 
+
 ROUTES = [
     ["Nan Jing", "Zhen Jiang", "Wu Xi", "Su Zhou", "Shang Hai"],
     ["Shang Hai", "Su Zhou"],
@@ -306,6 +310,8 @@ ROUTES = [
     ["Nan Jing", "Xu Zhou", "Ji Nan", "Bei Jing"],
     ["Tai Yuan", "Nan Jing", "Shang Hai"]
 ]
+
+
 def fill_station_name(driver):
     route = random.choice(ROUTES)
     start_id = random.randint(0, len(route) - 1)
@@ -325,7 +331,8 @@ def fill_station_name(driver):
     try:
         Select(driver.find_element_by_id('search_select_train_type')).select_by_index(0)
     except:
-        pass # Advanced search
+        pass  # Advanced search
+
 
 @PageOperations.register("basic_search", ["order_list2", "end"])
 def booking_ticket_via_basic_search(driver):
@@ -343,7 +350,7 @@ def booking_ticket_via_basic_search(driver):
 
     trip_table_item = random.choice(
         driver.find_element_by_id("tickets_booking_list_table").find_element_by_css_selector("tbody")
-        .find_elements_by_css_selector("tr")
+            .find_elements_by_css_selector("tr")
     )  # type: WebElement
     logger.info(f"select trip item {trip_table_item.text}")
 
@@ -378,8 +385,9 @@ def bookingTicketViaAdvancedSearch(driver):
 
     # click search button
     driver.find_element_by_id('ad_search_booking_button').click()
-    WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'ticket_booking_button')),
-                                    message='Timeout!!')
+    WebDriverWait(driver, 30).until(
+        expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'ticket_booking_button')),
+        message='Timeout!!')
     bookingButton = random.choice(driver.find_elements_by_class_name('ticket_booking_button')).click()
 
     # select assurance, food and so on
@@ -401,7 +409,7 @@ def pay(driver):
     else:
         logger.warning("No payment button to click")
         return
-    
+
     WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((By.ID, 'pay_for_preserve')),
                                     message='Timeout!!').click()
     deal_alert(driver, 5)
@@ -425,6 +433,7 @@ def cancel(driver):
     deal_alert(driver, )
     time.sleep(0.5)
 
+
 @PageOperations.register("click_consign", ["end"])
 def click_consign(driver):
     btns = driver.find_elements_by_class_name('am-btn')
@@ -442,6 +451,7 @@ def click_consign(driver):
     driver.find_element_by_id('submit_for_consign').click()
     deal_alert(driver, )
     time.sleep(0.5)
+
 
 def adminDelOrder(driver):
     try:

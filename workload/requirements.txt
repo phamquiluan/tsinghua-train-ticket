@@ -1,5 +1,5 @@
 loguru
-pytesseract
 pillow
 selenium
 requests
+ddddocr

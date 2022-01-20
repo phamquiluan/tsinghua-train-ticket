@@ -54,4 +54,4 @@ def create_user(bot_id):
 
 
 with ThreadPoolExecutor(max_workers=10) as pool:
-    pool.map(create_user, range(1, 100))
+    pool.map(create_user, range(0, 100))

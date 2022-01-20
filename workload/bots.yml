@@ -34,11 +34,11 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: bots
-        image: docker.peidan.me/lizytalk/train-ticket-bot
+        image: docker.peidan.me/lizytalk/train-ticket-bot@sha256:3d0f1de1847d6aaf322fbe73896248ab050cee31462362d0363bd97f5afb91b9
         resources:
           limits:
             cpu: "1000m"
-            memory: "200Mi"
+            memory: "1000Mi"
           requests:
             cpu: "100m"
             memory: "200Mi"
