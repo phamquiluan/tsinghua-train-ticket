@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: ts-user-mongo
+        FDG-node-type: mongo
         online-service-system: train-ticket
         injectable: "true"
     spec:
@@ -24,6 +25,19 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: mongodb_exporter_linux_amd64/mongodb_exporter
+        args: [
+            "--mongodb.uri=mongodb://{MONGO_HOST_NAME}:27017",
+        ]
+        env:
+        - name: MONGO_HOST_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels
+        ports:
+          - name: metrics
+            containerPort: 9100
 ---
 
 apiVersion: apps/v1
@@ -941,3 +955,32 @@ spec:
     - port: 27017
   selector:
    app: ts-food-mongo
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: kube-prometheus-stack
+    meta.helm.sh/release-namespace: monitoring
+  name: ts-mongo-monitoring
+  namespace: monitoring
+  labels:
+    app: kube-prometheus-stack-jaeger
+    app.kubernetes.io/instance: kube-prometheus-stack
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 30.0.1
+    chart: kube-prometheus-stack-30.0.1
+    heritage: Helm
+    release: kube-prometheus-stack
+spec:
+  podMetricsEndpoints:
+  - port: metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - tt
+  selector:
+    matchLabels:
+      FDG-node-type: mongo
