@@ -42,6 +42,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: ts-avatar-service
+spec:
+  selector:
+    matchLabels:
+      app: ts-avatar-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-avatar-service
+        online-service-system: train-ticket
+        injectable: "true"
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
+    spec:
+      containers:
+      - name: ts-avatar-service
+        image: docker.peidan.me/lizytalk/ts-avatar-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 17001
+        resources:
+          requests:
+            cpu: 500m
+            memory: 100Mi
+          limits:
+            cpu: 1000m
+            memory: 1000Mi
+        readinessProbe:
+          tcpSocket:
+            port: 17001
+          initialDelaySeconds: 160
+          periodSeconds: 10
+          timeoutSeconds: 5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: ts-admin-basic-info-service
 spec:
   selector:
@@ -2445,3 +2483,16 @@ spec:
       port: 16101
   selector:
    app: ts-voucher-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ts-avatar-service
+spec:
+  ports:
+    - name: http
+      port: 17001
+  selector:
+   app: ts-avatar-service

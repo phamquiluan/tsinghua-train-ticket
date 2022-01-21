@@ -26,18 +26,15 @@ spec:
             cpu: 50m
             memory: 100Mi
       - name: mongo-exporter
-        image: mongodb_exporter_linux_amd64/mongodb_exporter
+        image: percona/mongodb_exporter:0.20
         args: [
-            "--mongodb.uri=mongodb://{MONGO_HOST_NAME}:27017",
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
         ]
-        env:
-        - name: MONGO_HOST_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.labels
         ports:
           - name: metrics
-            containerPort: 9100
+            containerPort: 9216
 ---
 
 apiVersion: apps/v1
@@ -55,6 +52,7 @@ spec:
         app: ts-auth-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-auth-mongo
@@ -66,6 +64,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 ---
 
 apiVersion: apps/v1
@@ -83,6 +91,7 @@ spec:
         app: ts-route-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-route-mongo
@@ -94,6 +103,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -112,6 +131,7 @@ spec:
         app: ts-contacts-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-contacts-mongo
@@ -123,6 +143,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -141,6 +171,7 @@ spec:
         app: ts-order-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-order-mongo
@@ -152,6 +183,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -170,6 +211,7 @@ spec:
         app: ts-order-other-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-order-other-mongo
@@ -181,6 +223,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -199,6 +251,7 @@ spec:
         app: ts-config-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-config-mongo
@@ -210,6 +263,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -228,6 +291,7 @@ spec:
         app: ts-station-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-station-mongo
@@ -239,6 +303,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -257,6 +331,7 @@ spec:
         app: ts-train-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-train-mongo
@@ -268,6 +343,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -286,6 +371,7 @@ spec:
         app: ts-travel-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-travel-mongo
@@ -297,6 +383,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -315,6 +411,7 @@ spec:
         app: ts-travel2-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-travel2-mongo
@@ -326,6 +423,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -344,6 +451,7 @@ spec:
         app: ts-price-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-price-mongo
@@ -355,6 +463,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -373,6 +491,7 @@ spec:
         app: ts-security-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-security-mongo
@@ -384,6 +503,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -402,6 +531,7 @@ spec:
         app: ts-inside-payment-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-inside-payment-mongo
@@ -413,6 +543,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -431,6 +571,7 @@ spec:
         app: ts-payment-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-payment-mongo
@@ -442,6 +583,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -460,6 +611,7 @@ spec:
         app: ts-assurance-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-assurance-mongo
@@ -471,6 +623,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -489,6 +651,7 @@ spec:
         app: ts-ticket-office-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-ticket-office-mongo
@@ -500,6 +663,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 
 ---
@@ -519,6 +692,7 @@ spec:
         app: ts-voucher-mysql
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mysql
     spec:
       containers:
       - name: ts-voucher-mysql
@@ -534,7 +708,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-
 ---
 
 apiVersion: apps/v1
@@ -552,6 +725,7 @@ spec:
         app: ts-food-map-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-food-map-mongo
@@ -563,6 +737,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -581,6 +765,7 @@ spec:
         app: ts-consign-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-consign-mongo
@@ -592,6 +777,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -610,6 +805,7 @@ spec:
         app: ts-consign-price-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-consign-price-mongo
@@ -621,6 +817,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 
@@ -639,6 +845,7 @@ spec:
         app: ts-food-mongo
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: mongo
     spec:
       containers:
       - name: ts-food-mongo
@@ -650,6 +857,16 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+      - name: mongo-exporter
+        image: percona/mongodb_exporter:0.20
+        args: [
+            "--mongodb.uri=mongodb://localhost:27017",
+            "--discovering-mode",
+            "--compatible-mode",
+        ]
+        ports:
+          - name: metrics
+            containerPort: 9216
 
 ---
 apiVersion: v1
@@ -955,32 +1172,3 @@ spec:
     - port: 27017
   selector:
    app: ts-food-mongo
-
----
-apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
-metadata:
-  annotations:
-    meta.helm.sh/release-name: kube-prometheus-stack
-    meta.helm.sh/release-namespace: monitoring
-  name: ts-mongo-monitoring
-  namespace: monitoring
-  labels:
-    app: kube-prometheus-stack-jaeger
-    app.kubernetes.io/instance: kube-prometheus-stack
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: kube-prometheus-stack
-    app.kubernetes.io/version: 30.0.1
-    chart: kube-prometheus-stack-30.0.1
-    heritage: Helm
-    release: kube-prometheus-stack
-spec:
-  podMetricsEndpoints:
-  - port: metrics
-    interval: 15s
-  namespaceSelector:
-    matchNames:
-    - tt
-  selector:
-    matchLabels:
-      FDG-node-type: mongo

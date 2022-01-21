@@ -25,7 +25,11 @@ def get_admin_token():
     }
     response = requests.request("POST", url, headers=headers, data=payload)
 
-    return response.json()['data']['token']
+    try:
+        return response.json()['data']['token']
+    except TypeError as e:
+        print(response.text)
+        raise e
 
 
 TOKEN = get_admin_token()

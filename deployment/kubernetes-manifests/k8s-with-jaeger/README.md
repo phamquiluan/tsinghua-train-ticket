@@ -48,3 +48,10 @@
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 helm upgrade --install metrics-server --set args={"--kubelet-insecure-tls=true"} metrics-server/metrics-server
 ```
+
+## Install MongoDB Exporter
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+```

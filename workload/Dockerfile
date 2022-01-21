@@ -23,7 +23,7 @@ WORKDIR /workload
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
-COPY *.py /workload/
+ADD *.py /workload/
 
 RUN python3 create_users.py
 ENTRYPOINT ["python3", "bot.py", "--executable-path", "/usr/bin/google-chrome"]
