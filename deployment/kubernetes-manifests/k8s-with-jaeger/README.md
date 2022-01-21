@@ -42,3 +42,9 @@
    kubectl describe pod -n tt  -l online-service-system=train-ticket
    ```
    
+## Install Metric Service for `kubectl top`
+
+```bash
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm upgrade --install metrics-server --set args={"--kubelet-insecure-tls=true"} metrics-server/metrics-server
+```
