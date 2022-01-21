@@ -54,6 +54,7 @@ spec:
         app: ts-avatar-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -63,6 +64,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 17001
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -76,6 +79,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -92,6 +106,7 @@ spec:
         app: ts-admin-basic-info-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -101,6 +116,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18767
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -123,6 +140,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 
@@ -141,6 +169,7 @@ spec:
         app: ts-admin-order-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -150,6 +179,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16112
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -172,6 +203,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -189,6 +231,7 @@ spec:
         app: ts-admin-route-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -198,6 +241,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16113
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -220,6 +265,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -237,6 +293,7 @@ spec:
         app: ts-admin-travel-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -246,6 +303,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16114
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -268,6 +327,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -285,6 +355,7 @@ spec:
         app: ts-admin-user-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -294,6 +365,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16115
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -316,6 +389,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -333,6 +417,7 @@ spec:
         app: ts-assurance-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -342,6 +427,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18888
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -364,6 +451,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -381,6 +479,7 @@ spec:
         app: ts-basic-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -390,6 +489,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 15680
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -411,6 +512,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -428,6 +540,7 @@ spec:
         app: ts-cancel-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -437,6 +550,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18885
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -458,6 +573,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -475,6 +601,7 @@ spec:
         app: ts-config-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -484,6 +611,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 15679
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -505,6 +634,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -522,6 +662,7 @@ spec:
         app: ts-consign-price-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -531,6 +672,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16110
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -552,6 +695,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -569,6 +723,7 @@ spec:
         app: ts-consign-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -578,6 +733,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16111
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -591,6 +748,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -608,6 +776,7 @@ spec:
         app: ts-contacts-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -617,6 +786,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12347
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -638,6 +809,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -655,6 +837,7 @@ spec:
         app: ts-execute-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -664,6 +847,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12386
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -685,6 +870,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -702,6 +898,7 @@ spec:
         app: ts-food-map-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -711,6 +908,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18855
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -732,6 +931,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -749,6 +959,7 @@ spec:
         app: ts-food-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -758,6 +969,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18856
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -779,6 +992,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -796,6 +1020,7 @@ spec:
         app: ts-inside-payment-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -805,6 +1030,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18673
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -826,6 +1053,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -843,6 +1081,7 @@ spec:
         app: ts-auth-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -852,6 +1091,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12340
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -873,6 +1114,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -890,6 +1142,7 @@ spec:
         app: ts-news-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -899,6 +1152,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12862
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -920,6 +1175,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -937,6 +1203,7 @@ spec:
         app: ts-notification-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -946,6 +1213,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 17853
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -967,6 +1236,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -984,6 +1264,7 @@ spec:
         app: ts-order-other-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -993,6 +1274,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12032
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1014,6 +1297,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1031,6 +1325,7 @@ spec:
         app: ts-order-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1040,6 +1335,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12031
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1061,6 +1358,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1078,6 +1386,7 @@ spec:
         app: ts-payment-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1087,6 +1396,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 19001
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1108,6 +1419,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1125,6 +1447,7 @@ spec:
         app: ts-preserve-other-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1134,6 +1457,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 14569
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1155,6 +1480,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1172,6 +1508,7 @@ spec:
         app: ts-preserve-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1181,6 +1518,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 14568
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1202,6 +1541,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1219,6 +1569,7 @@ spec:
         app: ts-price-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1228,6 +1579,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16579
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1249,6 +1602,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1266,6 +1630,7 @@ spec:
         app: ts-rebook-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1275,6 +1640,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18886
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1296,6 +1663,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1313,6 +1691,7 @@ spec:
         app: ts-route-plan-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1322,6 +1701,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 14578
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1343,6 +1724,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1360,6 +1752,7 @@ spec:
         app: ts-route-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1369,6 +1762,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 11178
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1390,6 +1785,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1407,6 +1813,7 @@ spec:
         app: ts-seat-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1416,6 +1823,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 18898
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1437,6 +1846,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1454,6 +1874,7 @@ spec:
         app: ts-security-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1463,6 +1884,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 11188
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1484,6 +1907,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1501,6 +1935,7 @@ spec:
         app: ts-user-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1510,6 +1945,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12342
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1531,6 +1968,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1548,6 +1996,7 @@ spec:
         app: ts-station-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1557,6 +2006,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12345
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1578,6 +2029,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1595,6 +2057,7 @@ spec:
         app: ts-ticket-office-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1604,6 +2067,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16108
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1626,6 +2091,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1643,6 +2119,7 @@ spec:
         app: ts-ticketinfo-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1652,6 +2129,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 15681
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1673,6 +2152,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1690,6 +2180,7 @@ spec:
         app: ts-train-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1699,6 +2190,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 14567
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1720,6 +2213,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1737,6 +2241,7 @@ spec:
         app: ts-travel2-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1746,6 +2251,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16346
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1767,6 +2274,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1784,6 +2302,7 @@ spec:
         app: ts-travel-plan-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1793,6 +2312,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 14322
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1814,6 +2335,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1831,6 +2363,7 @@ spec:
         app: ts-travel-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1840,6 +2373,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 12346
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1861,6 +2396,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1875,10 +2421,10 @@ spec:
   template:
     metadata:
       labels:
-        jmx-exporter: enabled
         app: ts-verification-code-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1939,6 +2485,7 @@ spec:
         app: ts-voucher-service
         online-service-system: train-ticket
         injectable: "true"
+        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1948,6 +2495,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 16101
+        - name: metrics
+          containerPort: 9091
         resources:
           requests:
             cpu: 500m
@@ -1970,6 +2519,17 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
+        volumeMounts:
+        - name: jmx-exporter
+          mountPath: /JMX_exporter
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      volumes:
+      - name: jmx-exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: v1

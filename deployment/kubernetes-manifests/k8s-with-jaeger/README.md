@@ -65,3 +65,8 @@ kubectl apply -f mongo-pod-monitor.yml
           path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
           server: lzy-k8s-1.cluster.peidan.me
    ```
+
+2. add a PodMonitor
+   ```
+   kubectl apply -f jmx-exporter-monitor.yml
+   ```
