@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: kube-prometheus-stack
+    meta.helm.sh/release-namespace: monitoring
+  name: ts-jvm-monitoring
+  namespace: monitoring
+  labels:
+    app: kube-prometheus-stack-jaeger
+    app.kubernetes.io/instance: kube-prometheus-stack
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 30.0.1
+    chart: kube-prometheus-stack-30.0.1
+    heritage: Helm
+    release: kube-prometheus-stack
+spec:
+  podMetricsEndpoints:
+  - port: metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - tt
+  selector:
+    matchLabels:
+      jmx-exporter: enabled

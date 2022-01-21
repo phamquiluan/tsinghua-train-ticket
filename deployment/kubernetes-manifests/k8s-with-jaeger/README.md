@@ -50,8 +50,18 @@ helm upgrade --install metrics-server --set args={"--kubelet-insecure-tls=true"}
 ```
 
 ## Install MongoDB Exporter
+We need to add a PodMonitor
 ```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-
+kubectl apply -f mongo-pod-monitor.yml
 ```
+
+## Install JMX Exporter
+
+1. prepare the following NFS volume
+   ```
+   volumes:
+      - name: JMX_exporter
+        nfs:
+          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+          server: lzy-k8s-1.cluster.peidan.me
+   ```
