@@ -8,7 +8,7 @@ for dir in ts-*; do
     if [[ -d $dir ]]; then
         if [[ -n $(ls "$dir" | grep -i Dockerfile) ]]; then
             echo "build ${dir}"
-            docker buildx build --no-cache -t "$1"/"${dir}" "$dir"
+            docker buildx build -t "$1"/"${dir}" "$dir"
             docker tag "$1"/"${dir}":latest "$1"/"${dir}":"$2"
         fi
     fi

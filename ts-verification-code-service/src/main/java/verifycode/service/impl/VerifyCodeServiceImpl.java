@@ -77,8 +77,9 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 
         String strEnsure = "";
 
+        int charIndex = (int) (mapTable.length * Math.random()); // reduce the difficulty in verification code OCR for bot scripts
         for (int i = 0; i < 4; ++i) {
-            strEnsure += mapTable[(int) (mapTable.length * Math.random())];
+            strEnsure += mapTable[charIndex];
 
             g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
 

@@ -118,7 +118,7 @@ def login(driver, username, password, base_url):
         with NamedTemporaryFile("wb+", suffix=".png") as file:
             driver.find_element_by_id("flow_preserve_login_verification_code_img").screenshot(file.name)
             file.seek(0)
-            vc_text = ocr.classification(file.read())
+            vc_text = ocr.classification(file.read()).upper()
             # image = Image.open(file).resize((60, 20))
             # print("ddddocr: ", ocr.classification(image.tobytes()))
             # vc_text = "".join([

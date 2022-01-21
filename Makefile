@@ -5,11 +5,11 @@ Tag=latest
 
 # build image
 .PHONY: build
-build: package build-image
+build: package build-image  push-image
 
 .PHONY: package
 package:
-	@mvn clean package -DskipTests
+	@mvn package -DskipTests
 
 .PHONY: build-image
 build-image:
