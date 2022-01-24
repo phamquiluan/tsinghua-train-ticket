@@ -1,0 +1,33 @@
+###########################################
+# Nodes
+###########################################
+- class: node
+  type: Service
+  params:
+    id:
+      -
+
+- class: node
+  type: Mongo
+  params:
+    id:
+      -
+
+- class: node
+  type: Node
+  params:
+    id:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+  id: "{id}"
+  metrics:
+    - "{id}##fake"
+
+
+- class: node
+  type: Pod
+  params:
+    id:
