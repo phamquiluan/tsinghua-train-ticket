@@ -38,6 +38,10 @@ spec:
       node.data: true
       node.ingest: true
       node.store.allow_mmap: false
+    podTemplate:
+      spec:
+        nodeSelector:
+          kubernetes.io/hostname: lzy-k8s-1.cluster.peidan.me
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
