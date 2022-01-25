@@ -10,9 +10,9 @@ from tap import Tap
 
 
 class Config(Tap):
-    prometheus_url: str = os.environ.get('PROMETHEUS_URL', "http://lzy-k8s-1.cluster-k8s-1.lzy.local:9090")
+    prometheus_url: str = os.environ.get('PROMETHEUS_URL', "http://lzy-k8s-1.cluster.peidan.me:9090")
     es_url: str = os.environ.get(
-        'ES_URL', "http://elastic:6rnwp5E8TB4sm2QO70962myb@lzy-k8s-1.cluster.peidan.me:9200"
+        'ES_URL', "http://elastic:1Je40I6x4Fu9T5mYXtk70K3l@lzy-k8s-1.cluster.peidan.me:9200"
     ),
     es_index: str = "jaeger-span-*"
     begin_time: datetime = None
