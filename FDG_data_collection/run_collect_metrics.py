@@ -8,6 +8,7 @@ from lib_node_metrics import collect_node_metrics
 
 @profile
 def collect_metrics(config: Config):
+    logger.add(config.output_dir / "collect_metrics.log", mode="a")
     # collect_service_metrics(config)
     collect_node_metrics(config)
     # collect_pod_metrics()

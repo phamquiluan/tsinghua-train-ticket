@@ -135,3 +135,28 @@
     - "{id}##disk_average_write_wait_time"
     - "{id}##disk_average_queue_size"
 
+- class: node
+  type: Node Network
+  params:
+    id:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+      - node6
+  name: "{id} Network"
+  metrics:
+    - "{id}##network_receive_error_packets"
+    - "{id}##network_transmit_error_packets"
+    - "{id}##network_receive_drop_packets"
+    - "{id}##network_transmit_drop_packets"
+    - "{id}##network_receive_compressed_packets"
+    - "{id}##network_transmit_compressed_packets"
+    - "{id}##network_udp_in_errors"
+    - "{id}##network_udp_no_ports"
+    - "{id}##network_udp_lite_in_errors"
+    - "{id}##network_udp_rcv_buf_errors"
+    - "{id}##network_udp_snd_buf_errors"
+    - "{id}##network_tcp_in_segs"
+    - "{id}##network_tcp_out_segs"
