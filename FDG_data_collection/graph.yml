@@ -115,3 +115,23 @@
     - "{id}##memory_pages_major_fault"
     - "{id}##memory_pages_minor_fault"
 
+- class: node
+  type: Node Disk
+  params:
+    id:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+      - node6
+  name: "{id} Disk"
+  metrics:
+    - "{id}##disk_reads_completed_total"
+    - "{id}##disk_writes_completed_total"
+    - "{id}##disk_read_bytes_total"
+    - "{id}##disk_written_bytes_total"
+    - "{id}##disk_average_read_wait_time"
+    - "{id}##disk_average_write_wait_time"
+    - "{id}##disk_average_queue_size"
+

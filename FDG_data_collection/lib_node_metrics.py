@@ -66,7 +66,14 @@ INSTANCE_METRIC_QUERIES = {
     # "memory_pages_fault": 'rate(node_vmstat_pgfault{job="node-exporter"}[1m])',
     # "memory_pages_major_fault": 'rate(node_vmstat_pgmajfault{job="node-exporter"}[1m])',
     # "memory_pages_minor_fault": 'rate(node_vmstat_pgfault{job="node-exporter"}[1m]) - rate(node_vmstat_pgmajfault{job="node-exporter"}[1m])',
-    ## Network metrics
+    ## Disk metrics
+    "disk_reads_completed_total": 'sum by (instance)(rate(node_disk_reads_completed_total{job="node-exporter"}[1m]))',
+    "disk_writes_completed_total": 'sum by (instance)(rate(node_disk_writes_completed_total{job="node-exporter"}[1m]))',
+    "disk_read_bytes_total": 'sum by (instance)(rate(node_disk_read_bytes_total{job="node-exporter"}[1m]))',
+    "disk_written_bytes_total": 'sum by (instance)(rate(node_disk_written_bytes_total{job="node-exporter"}[1m]))',
+    "disk_average_read_wait_time": 'sum by (instance)(rate(node_disk_read_time_seconds_total{job="node-exporter"}[1m]) / rate(node_disk_reads_completed_total{job="node-exporter"}[1m]))',
+    "disk_average_write_wait_time": 'sum by (instance)(rate(node_disk_write_time_seconds_total{job="node-exporter"}[1m]) / rate(node_disk_writes_completed_total{job="node-exporter"}[1m]))',
+    "disk_average_queue_size": 'sum by (instance)(rate(node_disk_io_time_weighted_seconds_total{job="node-exporter"}[1m]))',
 
 }
 
