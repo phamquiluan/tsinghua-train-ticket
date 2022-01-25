@@ -1,0 +1,13 @@
+kind: PhysicalMachineChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: chaos-testing
+  name: node-cpu-stress-lzy-k8s-4
+spec:
+  action: stress-cpu
+  address:
+    - http://lzy-k8s-4.cluster.peidan.me:22777
+  stress-cpu:
+    load: 98
+    workers: 22
+  duration: '5m'

@@ -1,0 +1,12 @@
+kind: PhysicalMachineChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: chaos-testing
+  name: node-memory-stress-lzy-k8s-5
+spec:
+  action: stress-mem
+  address:
+    - http://lzy-k8s-5.cluster.peidan.me:22777
+  stress-mem:
+    size: 23.2GiB
+  duration: '5m'
