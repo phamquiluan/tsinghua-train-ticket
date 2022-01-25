@@ -18,7 +18,8 @@
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
    kubectl create namespace monitoring
-   helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
+   kubectl apply -f kube-prometheus-stack.pv.yml
+   helm upgrade --install -f kube-prometheus-stack.yml kube-prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
    ```
 
 ## Install Istio for Tracing
