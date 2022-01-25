@@ -45,7 +45,7 @@
 # Node Nodes
 ###########################################
 - class: node
-  type: Service
+  type: Node CPU
   params:
     id:
       - node1
@@ -65,3 +65,53 @@
     - "{id}##cpu_busy_steal"
     - "{id}##cpu_busy_guest"
     - "{id}##cpu_busy_others"
+
+- class: node
+  type: Node Memory
+  params:
+    id:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+      - node6
+  name: "{id} Memory"
+  metrics:
+    - "{id}##memory_inactive_bytes"
+    - "{id}##memory_active_bytes"
+    - "{id}##memory_committed_AS_bytes"
+    - "{id}##memory_commit_limit_bytes"
+    - "{id}##memory_inactive_file_bytes"
+    - "{id}##memory_inactive_anon_bytes"
+    - "{id}##memory_active_file_bytes"
+    - "{id}##memory_active_anon_bytes"
+    - "{id}##memory_writeback_bytes"
+    - "{id}##memory_writeback_tmp_bytes"
+    - "{id}##memory_dirty_bytes"
+    - "{id}##memory_mapped_bytes"
+    - "{id}##memory_shmem_bytes"
+    - "{id}##memory_shmem_huge_pages_bytes"
+    - "{id}##memory_shmem_pmd_mapped_bytes"
+    - "{id}##memory_S_unreclaim_bytes"
+    - "{id}##memory_S_reclaimable_bytes"
+    - "{id}##memory_Vmalloc_chunk_bytes"
+    - "{id}##memory_Vmalloc_total_bytes"
+    - "{id}##memory_Vmalloc_used_bytes"
+    - "{id}##memory_anon_huge_pages_bytes"
+    - "{id}##memory_anon_pages_bytes"
+    - "{id}##memory_kernel_stack_bytes"
+    - "{id}##memory_per_cpu_bytes"
+    - "{id}##memory_huge_pages_bytes"
+    - "{id}##memory_huge_page_size_bytes"
+    - "{id}##memory_direct_map_1G_bytes"
+    - "{id}##memory_direct_map_2M_bytes"
+    - "{id}##memory_direct_map_4K_bytes"
+    - "{id}##memory_unevitable_bytes"
+    - "{id}##memory_Mlocked_bytes"
+    - "{id}##memory_pages_in"
+    - "{id}##memory_pages_out"
+    - "{id}##memory_pages_fault"
+    - "{id}##memory_pages_major_fault"
+    - "{id}##memory_pages_minor_fault"
+
