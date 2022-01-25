@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-user-mongo
 spec:
+  serviceName: ts-user-mongo
   selector:
     matchLabels:
       app: ts-user-mongo
@@ -38,10 +39,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-auth-mongo
 spec:
+  serviceName: ts-auth-mongo
   selector:
     matchLabels:
       app: ts-auth-mongo
@@ -77,10 +79,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-route-mongo
 spec:
+  serviceName: ts-route-mongo
   selector:
     matchLabels:
       app: ts-route-mongo
@@ -117,10 +120,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-contacts-mongo
 spec:
+  serviceName: ts-contacts-mongo
   selector:
     matchLabels:
       app: ts-contacts-mongo
@@ -157,10 +161,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-order-mongo
 spec:
+  serviceName: ts-order-mongo
   selector:
     matchLabels:
       app: ts-order-mongo
@@ -197,10 +202,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-order-other-mongo
 spec:
+  serviceName: ts-order-other-mongo
   selector:
     matchLabels:
       app: ts-order-other-mongo
@@ -237,10 +243,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-config-mongo
 spec:
+  serviceName: ts-config-mongo
   selector:
     matchLabels:
       app: ts-config-mongo
@@ -277,10 +284,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-station-mongo
 spec:
+  serviceName: ts-station-mongo
   selector:
     matchLabels:
       app: ts-station-mongo
@@ -317,10 +325,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-train-mongo
 spec:
+  serviceName: ts-train-mongo
   selector:
     matchLabels:
       app: ts-train-mongo
@@ -357,10 +366,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-travel-mongo
 spec:
+  serviceName: ts-travel-mongo
   selector:
     matchLabels:
       app: ts-travel-mongo
@@ -397,10 +407,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-travel2-mongo
 spec:
+  serviceName: ts-travel2-mongo
   selector:
     matchLabels:
       app: ts-travel2-mongo
@@ -437,10 +448,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-price-mongo
 spec:
+  serviceName: ts-price-mongo
   selector:
     matchLabels:
       app: ts-price-mongo
@@ -477,10 +489,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-security-mongo
 spec:
+  serviceName: ts-security-mongo
   selector:
     matchLabels:
       app: ts-security-mongo
@@ -517,10 +530,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-inside-payment-mongo
 spec:
+  serviceName: ts-inside-payment-mongo
   selector:
     matchLabels:
       app: ts-inside-payment-mongo
@@ -557,10 +571,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-payment-mongo
 spec:
+  serviceName: ts-payment-mongo
   selector:
     matchLabels:
       app: ts-payment-mongo
@@ -597,10 +612,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-assurance-mongo
 spec:
+  serviceName: ts-assurance-mongo
   selector:
     matchLabels:
       app: ts-assurance-mongo
@@ -637,10 +653,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-ticket-office-mongo
 spec:
+  serviceName: ts-ticket-office-mongo
   selector:
     matchLabels:
       app: ts-ticket-office-mongo
@@ -678,10 +695,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-voucher-mysql
 spec:
+  serviceName: ts-voucher-mysql
   selector:
     matchLabels:
       app: ts-voucher-mysql
@@ -711,10 +729,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-food-map-mongo
 spec:
+  serviceName: ts-food-map-mongo
   selector:
     matchLabels:
       app: ts-food-map-mongo
@@ -751,10 +770,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-consign-mongo
 spec:
+  serviceName: ts-consign-mongo
   selector:
     matchLabels:
       app: ts-consign-mongo
@@ -791,10 +811,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-consign-price-mongo
 spec:
+  serviceName: ts-consign-price-mongo
   selector:
     matchLabels:
       app: ts-consign-price-mongo
@@ -831,10 +852,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-food-mongo
 spec:
+  serviceName: ts-food-mongo
   selector:
     matchLabels:
       app: ts-food-mongo

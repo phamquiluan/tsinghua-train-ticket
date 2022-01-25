@@ -1,53 +1,13 @@
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: rest-service-collect
-#   labels:
-#     app: rest-service-collect
-# spec:
-#   type: NodePort
-#   ports:
-#     - port: 9413
-#   selector:
-#     app: rest-service-collect
-# ---
-
-# apiVersion: extensions/v1beta1
-# kind: Deployment
-# metadata:
-#   name: rest-service-collect
-# spec:
-#   replicas: 1
-#   template:
-#     metadata:
-#       labels:
-#         app: rest-service-collect
-#         version: v1
-#     spec:
-#       nodeName: k8snode3
-#       containers:
-#       - name: rest-service-collect
-#         image: header/rest-service-collect
-#         imagePullPolicy: IfNotPresent
-#         ports:
-#         - containerPort: 9413
-#         volumeMounts:
-#         - name: collect
-#           mountPath: /parquet
-#       volumes:
-#       - name: collect
-#         hostPath:
-#           path: /home/parquet
----
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-avatar-service
 spec:
+  serviceName: ts-avatar-service
   selector:
     matchLabels:
       app: ts-avatar-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -92,10 +52,11 @@ spec:
           server: lzy-k8s-1.cluster.peidan.me
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-admin-basic-info-service
 spec:
+  serviceName: ts-admin-basic-info-service
   selector:
     matchLabels:
       app: ts-admin-basic-info-service
@@ -155,10 +116,11 @@ spec:
 
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-admin-order-service
 spec:
+  serviceName: ts-admin-order-service
   selector:
     matchLabels:
       app: ts-admin-order-service
@@ -217,10 +179,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-admin-route-service
 spec:
+  serviceName: ts-admin-route-service
   selector:
     matchLabels:
       app: ts-admin-route-service
@@ -279,10 +242,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-admin-travel-service
 spec:
+  serviceName: ts-admin-travel-service
   selector:
     matchLabels:
       app: ts-admin-travel-service
@@ -341,10 +305,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-admin-user-service
 spec:
+  serviceName: ts-admin-user-service
   selector:
     matchLabels:
       app: ts-admin-user-service
@@ -403,10 +368,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-assurance-service
 spec:
+  serviceName: ts-assurance-service
   selector:
     matchLabels:
       app: ts-assurance-service
@@ -465,10 +431,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-basic-service
 spec:
+  serviceName: ts-basic-service
   selector:
     matchLabels:
       app: ts-basic-service
@@ -526,14 +493,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-cancel-service
 spec:
+  serviceName: ts-cancel-service
   selector:
     matchLabels:
       app: ts-cancel-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -587,14 +555,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-config-service
 spec:
+  serviceName: ts-config-service
   selector:
     matchLabels:
       app: ts-config-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -648,14 +617,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-consign-price-service
 spec:
+  serviceName: ts-consign-price-service
   selector:
     matchLabels:
       app: ts-consign-price-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -709,14 +679,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-consign-service
 spec:
+  serviceName: ts-consign-service
   selector:
     matchLabels:
       app: ts-consign-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -762,14 +733,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-contacts-service
 spec:
+  serviceName: ts-contacts-service
   selector:
     matchLabels:
       app: ts-contacts-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -823,14 +795,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-execute-service
 spec:
+  serviceName: ts-execute-service
   selector:
     matchLabels:
       app: ts-execute-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -884,14 +857,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-food-map-service
 spec:
+  serviceName: ts-food-map-service
   selector:
     matchLabels:
       app: ts-food-map-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -945,14 +919,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-food-service
 spec:
+  serviceName: ts-food-service
   selector:
     matchLabels:
       app: ts-food-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1006,14 +981,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-inside-payment-service
 spec:
+  serviceName: ts-inside-payment-service
   selector:
     matchLabels:
       app: ts-inside-payment-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1067,14 +1043,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-auth-service
 spec:
+  serviceName: ts-auth-service
   selector:
     matchLabels:
       app: ts-auth-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1128,14 +1105,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-news-service
 spec:
+  serviceName: ts-news-service
   selector:
     matchLabels:
       app: ts-news-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1189,14 +1167,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-notification-service
 spec:
+  serviceName: ts-notification-service
   selector:
     matchLabels:
       app: ts-notification-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1250,14 +1229,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-order-other-service
 spec:
+  serviceName: ts-order-other-service
   selector:
     matchLabels:
       app: ts-order-other-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -1311,10 +1291,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-order-service
 spec:
+  serviceName: ts-order-service
   selector:
     matchLabels:
       app: ts-order-service
@@ -1372,14 +1353,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-payment-service
 spec:
+  serviceName: ts-payment-service
   selector:
     matchLabels:
       app: ts-payment-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -1433,14 +1415,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-preserve-other-service
 spec:
+  serviceName: ts-preserve-other-service
   selector:
     matchLabels:
       app: ts-preserve-other-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1494,14 +1477,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-preserve-service
 spec:
+  serviceName: ts-preserve-service
   selector:
     matchLabels:
       app: ts-preserve-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1555,14 +1539,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-price-service
 spec:
+  serviceName: ts-price-service
   selector:
     matchLabels:
       app: ts-price-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1616,14 +1601,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-rebook-service
 spec:
+  serviceName: ts-rebook-service
   selector:
     matchLabels:
       app: ts-rebook-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1677,14 +1663,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-route-plan-service
 spec:
+  serviceName: ts-route-plan-service
   selector:
     matchLabels:
       app: ts-route-plan-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1738,14 +1725,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-route-service
 spec:
+  serviceName: ts-route-service
   selector:
     matchLabels:
       app: ts-route-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1799,14 +1787,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-seat-service
 spec:
+  serviceName: ts-seat-service
   selector:
     matchLabels:
       app: ts-seat-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1860,14 +1849,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-security-service
 spec:
+  serviceName: ts-security-service
   selector:
     matchLabels:
       app: ts-security-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -1921,14 +1911,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-user-service
 spec:
+  serviceName: ts-user-service
   selector:
     matchLabels:
       app: ts-user-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -1982,10 +1973,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-station-service
 spec:
+  serviceName: ts-station-service
   selector:
     matchLabels:
       app: ts-station-service
@@ -2043,14 +2035,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-ticket-office-service
 spec:
+  serviceName: ts-ticket-office-service
   selector:
     matchLabels:
       app: ts-ticket-office-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -2105,14 +2098,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-ticketinfo-service
 spec:
+  serviceName: ts-ticketinfo-service
   selector:
     matchLabels:
       app: ts-ticketinfo-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -2166,14 +2160,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-train-service
 spec:
+  serviceName: ts-train-service
   selector:
     matchLabels:
       app: ts-train-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -2227,14 +2222,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-travel2-service
 spec:
+  serviceName: ts-travel2-service
   selector:
     matchLabels:
       app: ts-travel2-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -2288,14 +2284,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-travel-plan-service
 spec:
+  serviceName: ts-travel-plan-service
   selector:
     matchLabels:
       app: ts-travel-plan-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -2349,10 +2346,11 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-travel-service
 spec:
+  serviceName: ts-travel-service
   selector:
     matchLabels:
       app: ts-travel-service
@@ -2410,14 +2408,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-verification-code-service
 spec:
+  serviceName: ts-verification-code-service
   selector:
     matchLabels:
       app: ts-verification-code-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -2471,14 +2470,15 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: ts-voucher-service
 spec:
+  serviceName: ts-voucher-service
   selector:
     matchLabels:
       app: ts-voucher-service
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
