@@ -1,3 +1,5 @@
+import threading
+from queue import Queue
 from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, Optional
 
@@ -111,17 +113,32 @@ def parse_response(metric_name: str, rsp: Dict) -> Optional[pd.DataFrame]:
 
 def collect_node_metrics(config: Config):
     metric_df_list = []
-    for metric_name, query in INSTANCE_METRIC_QUERIES.items():
-        logger.info(f"{metric_name=} {query=}")
-        rsp = requests.get(f"{config.prometheus_url}/api/v1/query_range", params={
-            "query": query,
+
+    data_queue = Queue()
+
+    def process_response_worker():
+        while True:
+            __metric_name, __rsp = data_queue.get()
+            __rsp_df = parse_response(metric_name, __rsp)
+            if __rsp_df is not None:
+                metric_df_list.append(__rsp_df)
+            data_queue.task_done()
+
+    def query_prometheus_and_process_response(__metric_name: str, __query: str):
+        __rsp = requests.get(f"{config.prometheus_url}/api/v1/query_range", params={
+            "query": __query,
             "start": int(config.begin_time.timestamp()),
             "end": int(config.end_time.timestamp()),
             "step": 60,
         })
-        rsp_df = parse_response(metric_name=metric_name, rsp=rsp.json())
-        if rsp_df is not None:
-            metric_df_list.append(rsp_df)
+        data_queue.put((metric_name, __rsp.json()))
+
+    threading.Thread(target=process_response_worker, daemon=True).start()
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        for metric_name, query in INSTANCE_METRIC_QUERIES.items():
+            logger.info(f"{metric_name=} {query=}")
+            executor.submit(query_prometheus_and_process_response, metric_name, query)
+    data_queue.join()
     metric_df = pd.concat(metric_df_list, ignore_index=True)
     print(metric_df)  ## TODO: DEBUG
     metric_df.to_pickle(str((config.output_dir / "node_metrics.pkl").resolve()))
