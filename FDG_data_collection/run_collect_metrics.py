@@ -2,6 +2,7 @@ from loguru import logger
 from pyprof import profile
 
 from config import Config
+from lib_pod_metrics import collect_pod_metrics
 from lib_spans import collect_service_metrics
 from lib_node_metrics import collect_node_metrics
 
@@ -10,8 +11,8 @@ from lib_node_metrics import collect_node_metrics
 def collect_metrics(config: Config):
     logger.add(config.output_dir / "collect_metrics.log", mode="a")
     # collect_service_metrics(config)
-    collect_node_metrics(config)
-    # collect_pod_metrics()
+    # collect_node_metrics(config)
+    collect_pod_metrics(config)
     # collect_container_metrics()
     # collect_jvm_metrics()
     # collect_service_metrics(config)

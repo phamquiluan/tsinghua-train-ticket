@@ -1,4 +1,9 @@
 ###########################################
+# Pod和Node之间的部署关系， 每次故障都是不一样的。
+# 这个文件只手动记录不变的部分， Pod和Node的关系需要在append在后面
+###########################################
+
+###########################################
 # Nodes
 ###########################################
 - class: node
@@ -15,16 +20,121 @@
   params:
     id:
 
-- class: node
-  type: Container
-  params:
-    id:
-
 
 - class: node
   type: Pod
   params:
     id:
+      - ts-admin-basic-info-service-0
+      - ts-admin-order-service-0
+      - ts-admin-route-service-0
+      - ts-admin-travel-service-0
+      - ts-admin-user-service-0
+      - ts-assurance-mongo-0
+      - ts-assurance-service-0
+      - ts-auth-mongo-0
+      - ts-auth-service-0
+      - ts-auth-service-1
+      - ts-avatar-service-0
+      - ts-avatar-service-1
+      - ts-basic-service-0
+      - ts-basic-service-1
+      - ts-basic-service-2
+      - ts-cancel-service-0
+      - ts-cancel-service-1
+      - ts-config-mongo-0
+      - ts-config-service-0
+      - ts-config-service-1
+      - ts-consign-mongo-0
+      - ts-consign-price-mongo-0
+      - ts-consign-price-service-0
+      - ts-consign-price-service-1
+      - ts-consign-service-0
+      - ts-consign-service-1
+      - ts-contacts-mongo-0
+      - ts-contacts-service-0
+      - ts-contacts-service-1
+      - ts-execute-service-0
+      - ts-execute-service-1
+      - ts-food-map-mongo-0
+      - ts-food-map-service-0
+      - ts-food-map-service-1
+      - ts-food-mongo-0
+      - ts-food-service-0
+      - ts-food-service-1
+      - ts-inside-payment-mongo-0
+      - ts-inside-payment-service-0
+      - ts-inside-payment-service-1
+      - ts-news-service-0
+      - ts-news-service-1
+      - ts-notification-service-0
+      - ts-notification-service-1
+      - ts-order-mongo-0
+      - ts-order-other-mongo-0
+      - ts-order-other-service-0
+      - ts-order-other-service-1
+      - ts-order-service-0
+      - ts-order-service-1
+      - ts-order-service-2
+      - ts-payment-mongo-0
+      - ts-payment-service-0
+      - ts-payment-service-1
+      - ts-payment-service-2
+      - ts-preserve-other-service-0
+      - ts-preserve-other-service-1
+      - ts-preserve-service-0
+      - ts-preserve-service-1
+      - ts-price-mongo-0
+      - ts-price-service-0
+      - ts-price-service-1
+      - ts-rebook-service-0
+      - ts-rebook-service-1
+      - ts-route-mongo-0
+      - ts-route-plan-service-0
+      - ts-route-plan-service-1
+      - ts-route-service-0
+      - ts-route-service-1
+      - ts-seat-service-0
+      - ts-seat-service-1
+      - ts-security-mongo-0
+      - ts-security-service-0
+      - ts-security-service-1
+      - ts-station-mongo-0
+      - ts-station-service-0
+      - ts-station-service-1
+      - ts-station-service-2
+      - ts-ticket-office-mongo-0
+      - ts-ticket-office-service-0
+      - ts-ticket-office-service-1
+      - ts-ticketinfo-service-0
+      - ts-ticketinfo-service-1
+      - ts-train-mongo-0
+      - ts-train-service-0
+      - ts-train-service-1
+      - ts-train-service-2
+      - ts-travel-mongo-0
+      - ts-travel-plan-service-0
+      - ts-travel-plan-service-1
+      - ts-travel-service-0
+      - ts-travel-service-1
+      - ts-travel-service-2
+      - ts-travel2-mongo-0
+      - ts-travel2-service-0
+      - ts-travel2-service-1
+      - ts-ui-dashboard-0
+      - ts-user-mongo-0
+      - ts-user-service-0
+      - ts-user-service-1
+      - ts-user-service-2
+      - ts-verification-code-service-0
+      - ts-verification-code-service-1
+      - ts-voucher-mysql-0
+      - ts-voucher-service-0
+      - ts-voucher-service-1
+      - ts-voucher-service-2
+  id: "{id}"
+  metrics:
+    - "{id}##fake"
 
 - class: node
   type: Node
@@ -160,3 +270,123 @@
     - "{id}##network_udp_snd_buf_errors"
     - "{id}##network_tcp_in_segs"
     - "{id}##network_tcp_out_segs"
+
+###########################################
+# Pod Nodes
+###########################################
+- class: node
+  type: Pod CPU
+  params:
+    id:
+      - ts-admin-basic-info-service-0
+      - ts-admin-order-service-0
+      - ts-admin-route-service-0
+      - ts-admin-travel-service-0
+      - ts-admin-user-service-0
+      - ts-assurance-mongo-0
+      - ts-assurance-service-0
+      - ts-auth-mongo-0
+      - ts-auth-service-0
+      - ts-auth-service-1
+      - ts-avatar-service-0
+      - ts-avatar-service-1
+      - ts-basic-service-0
+      - ts-basic-service-1
+      - ts-basic-service-2
+      - ts-cancel-service-0
+      - ts-cancel-service-1
+      - ts-config-mongo-0
+      - ts-config-service-0
+      - ts-config-service-1
+      - ts-consign-mongo-0
+      - ts-consign-price-mongo-0
+      - ts-consign-price-service-0
+      - ts-consign-price-service-1
+      - ts-consign-service-0
+      - ts-consign-service-1
+      - ts-contacts-mongo-0
+      - ts-contacts-service-0
+      - ts-contacts-service-1
+      - ts-execute-service-0
+      - ts-execute-service-1
+      - ts-food-map-mongo-0
+      - ts-food-map-service-0
+      - ts-food-map-service-1
+      - ts-food-mongo-0
+      - ts-food-service-0
+      - ts-food-service-1
+      - ts-inside-payment-mongo-0
+      - ts-inside-payment-service-0
+      - ts-inside-payment-service-1
+      - ts-news-service-0
+      - ts-news-service-1
+      - ts-notification-service-0
+      - ts-notification-service-1
+      - ts-order-mongo-0
+      - ts-order-other-mongo-0
+      - ts-order-other-service-0
+      - ts-order-other-service-1
+      - ts-order-service-0
+      - ts-order-service-1
+      - ts-order-service-2
+      - ts-payment-mongo-0
+      - ts-payment-service-0
+      - ts-payment-service-1
+      - ts-payment-service-2
+      - ts-preserve-other-service-0
+      - ts-preserve-other-service-1
+      - ts-preserve-service-0
+      - ts-preserve-service-1
+      - ts-price-mongo-0
+      - ts-price-service-0
+      - ts-price-service-1
+      - ts-rebook-service-0
+      - ts-rebook-service-1
+      - ts-route-mongo-0
+      - ts-route-plan-service-0
+      - ts-route-plan-service-1
+      - ts-route-service-0
+      - ts-route-service-1
+      - ts-seat-service-0
+      - ts-seat-service-1
+      - ts-security-mongo-0
+      - ts-security-service-0
+      - ts-security-service-1
+      - ts-station-mongo-0
+      - ts-station-service-0
+      - ts-station-service-1
+      - ts-station-service-2
+      - ts-ticket-office-mongo-0
+      - ts-ticket-office-service-0
+      - ts-ticket-office-service-1
+      - ts-ticketinfo-service-0
+      - ts-ticketinfo-service-1
+      - ts-train-mongo-0
+      - ts-train-service-0
+      - ts-train-service-1
+      - ts-train-service-2
+      - ts-travel-mongo-0
+      - ts-travel-plan-service-0
+      - ts-travel-plan-service-1
+      - ts-travel-service-0
+      - ts-travel-service-1
+      - ts-travel-service-2
+      - ts-travel2-mongo-0
+      - ts-travel2-service-0
+      - ts-travel2-service-1
+      - ts-ui-dashboard-0
+      - ts-user-mongo-0
+      - ts-user-service-0
+      - ts-user-service-1
+      - ts-user-service-2
+      - ts-verification-code-service-0
+      - ts-verification-code-service-1
+      - ts-voucher-mysql-0
+      - ts-voucher-service-0
+      - ts-voucher-service-1
+      - ts-voucher-service-2
+  id: "{id} CPU"
+  metrics:
+    - "{id}##cpu_usage"
+    - "{id}##cpu_system_usage"
+    - "{id}##cpu_user_usage"

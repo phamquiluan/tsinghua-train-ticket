@@ -139,6 +139,9 @@ def collect_node_metrics(config: Config):
             logger.info(f"{metric_name=} {query=}")
             executor.submit(query_prometheus_and_process_response, metric_name, query)
     data_queue.join()
-    metric_df = pd.concat(metric_df_list, ignore_index=True)
-    print(metric_df)  ## TODO: DEBUG
+    metric_df = pd.concat(metric_df_list, ignore_index=True).astype({
+        "timestamp": "int",
+        "value": "float",
+        "name": "str",
+    })
     metric_df.to_pickle(str((config.output_dir / "node_metrics.pkl").resolve()))
