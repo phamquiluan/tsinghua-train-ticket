@@ -102,4 +102,4 @@ def collect_service_metrics(config):
 
     ret_df = pd.concat([count_df, cost_df, proc_df, succ_rate_df])
     ret_df['name'] = ret_df.apply(lambda _: f"{_['serviceName']}##{_['metric_kind']}", axis=1)
-    ret_df.to_pickle(config.output_dir / 'metrics.pkl')
+    ret_df.to_pickle(config.output_dir / 'service_metrics.pkl')
