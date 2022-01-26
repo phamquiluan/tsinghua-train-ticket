@@ -26,14 +26,14 @@ BUBBLE_TIME = 0
 EXEC_CNT = 0
 PERIOD = 24 * 60 * 60
 PEAK_LIST = [
-    (0.2, 43200, 30000),
-    (0.4, 39600, 5400),
-    (0.8, 68400, 7200)
+    (0.4, 43200, 30000),
+    (0.9, 36000, 7200),
+    (0.9, 57600, 7200)
 ]
 
 def calc_prob(t):
     ret = 0
-    t = (t * 24) % PERIOD  # 放缩到每小时为一个周期
+    t = (t) % PERIOD
     for coef, center, sigma in PEAK_LIST:
         if t <= center:
             dist = min(center - t, t + PERIOD - center)
