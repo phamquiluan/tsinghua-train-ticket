@@ -119,7 +119,7 @@ def collect_node_metrics(config: Config):
     def process_response_worker():
         while True:
             __metric_name, __rsp = data_queue.get()
-            __rsp_df = parse_response(metric_name, __rsp)
+            __rsp_df = parse_response(__metric_name, __rsp)
             if __rsp_df is not None:
                 metric_df_list.append(__rsp_df)
             data_queue.task_done()
@@ -131,7 +131,7 @@ def collect_node_metrics(config: Config):
             "end": int(config.end_time.timestamp()),
             "step": 60,
         })
-        data_queue.put((metric_name, __rsp.json()))
+        data_queue.put((__metric_name, __rsp.json()))
 
     threading.Thread(target=process_response_worker, daemon=True).start()
     with ThreadPoolExecutor(max_workers=10) as executor:
