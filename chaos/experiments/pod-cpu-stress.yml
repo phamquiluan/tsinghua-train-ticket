@@ -1,0 +1,17 @@
+kind: StressChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: chaos-testing
+  name: pod-cpu-stress
+spec:
+  selector:
+    namespaces:
+      - tt
+    labelSelectors:
+      injectable: 'true'
+  mode: one
+  stressors:
+    cpu:
+      workers: 2
+      load: 100
+  duration: '5m'

@@ -19,7 +19,6 @@ def collect_spans(config: Config):
     query_index_by_time_range_and_save_to_file(
         es=config.es, index=config.es_index,
         min_time=config.begin_time, max_time=config.end_time,
-        step=1000,
         output_file=config.output_dir / "spans.txt"
     )
 

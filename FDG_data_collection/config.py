@@ -15,6 +15,7 @@ class Config(Tap):
         'ES_URL', "http://elastic:1Je40I6x4Fu9T5mYXtk70K3l@lzy-k8s-1.cluster.peidan.me:9200"
     ),
     es_index: str = "jaeger-span-*"
+    kube_config: str = os.environ.get('KUBECONFIG', "./kube.conf")
     begin_time: datetime = None
     end_time: datetime = None
     output_dir: Path = None

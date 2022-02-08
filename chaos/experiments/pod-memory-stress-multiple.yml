@@ -1,0 +1,18 @@
+kind: StressChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: chaos-testing
+  name: pod-memory-stress-multiple
+spec:
+  selector:
+    namespaces:
+      - tt
+    labelSelectors:
+      injectable: 'true'
+  mode: fixed
+  value: '2'
+  stressors:
+    memory:
+      workers: 1
+      size: 500MiB
+  duration: 5m
