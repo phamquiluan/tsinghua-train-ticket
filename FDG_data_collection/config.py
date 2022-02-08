@@ -36,6 +36,7 @@ class Config(Tap):
             raise ValueError("begin_time and end_time are both None")
         self.begin_time = timezone("Asia/Shanghai").localize(self.begin_time)
         self.end_time = timezone("Asia/Shanghai").localize(self.end_time)
+        self.end_time = self.end_time.replace(second=59, microsecond=999999)
 
         if self.output_dir is None:
             self.output_dir = Path(f"./collected_metrics/{self.begin_time.isoformat()}-{self.end_time.isoformat()}")

@@ -25,9 +25,9 @@ def query_index_by_time_range(
 
     time_range_body = {"range": {"startTimeMillis": {"format": "epoch_millis"}}}
     if min_time is not None:
-        time_range_body["range"]["startTimeMillis"]["gt"] = int(min_time.timestamp() * 1000)
+        time_range_body["range"]["startTimeMillis"]["gte"] = int(min_time.timestamp() * 1000)
     if max_time is not None:
-        time_range_body["range"]["startTimeMillis"]["lt"] = int(max_time.timestamp() * 1000)
+        time_range_body["range"]["startTimeMillis"]["lte"] = int(max_time.timestamp() * 1000)
     body["query"]["bool"]["must"].append(time_range_body)
 
     logger.debug(f"query_index_by_time_range body: {body}")

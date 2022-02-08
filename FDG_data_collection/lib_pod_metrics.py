@@ -96,5 +96,4 @@ def collect_pod_metrics(config: Config):
         "value": "float",
         "name": "str",
     })
-    print(metric_df.to_csv(sep="\t", float_format="%3.3f"))  ## TODO: DEBUG
     metric_df.to_pickle(str((config.output_dir / "pod_metrics.pkl").resolve()))

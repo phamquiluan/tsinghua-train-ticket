@@ -6,12 +6,11 @@ from pprint import pformat
 from typing import Dict
 
 import pandas as pd
-from pandas import DatetimeTZDtype
 from pyprof import profile
 from tqdm import tqdm
 
-from es_index_iterator import query_index_by_time_range_and_save_to_file
 from config import Config
+from es_index_iterator import query_index_by_time_range_and_save_to_file
 from utils import tags_dict
 
 
@@ -88,7 +87,8 @@ def collect_service_metrics(config):
     traces_df['timestamp'] = traces_df['timestamp'].dt.floor('min').dt.to_pydatetime()
     traces_df['timestamp'] = traces_df['timestamp'].map(lambda _: int(_.timestamp()))
     children_durations = traces_df.groupby("parentSpanID")['duration'].sum()
-    traces_df['process_time'] = traces_df.apply(lambda x: x['duration'] - children_durations.get(x['spanID'], 0), axis=1)
+    traces_df['process_time'] = traces_df.apply(lambda x: x['duration'] - children_durations.get(x['spanID'], 0),
+                                                axis=1)
 
     groupby = traces_df.groupby(['serviceName', 'timestamp'])
     count_df = groupby.size().reset_index(name='value')
