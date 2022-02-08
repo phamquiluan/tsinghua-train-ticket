@@ -33,7 +33,7 @@ PEAK_LIST = [
 
 def calc_prob(t):
     ret = 0
-    t = (t) % PERIOD
+    t = (t * 17) % PERIOD
     for coef, center, sigma in PEAK_LIST:
         if t <= center:
             dist = min(center - t, t + PERIOD - center)
