@@ -35,6 +35,7 @@ def collect_traces_from_spans(config: Config):
         "duration": [],
         "error": [],
         "kind": [],
+        "pod": [],
     }
     with gzip.open(config.output_dir / "spans.txt.gz", "r") as f:
         for line in tqdm(f, desc="reading spans"):
@@ -49,12 +50,13 @@ def collect_traces_from_spans(config: Config):
             data["spanID"].append(span_id)
             data["traceID"].append(trace_id)
             data['timestamp'].append(span['startTime'] * 1e3)
-            data["serviceName"].append(span['process']['serviceName'])
+            data["serviceName"].append(span['process']['serviceName'].split(".")[0])
             data['operationName'].append(span['operationName'])
             data['parentSpanID'].append(parent_span_id)
             data['duration'].append(span['duration'])
             data['error'].append(is_span_error(tags))
             data['kind'].append(tags.get("span.kind", None))
+            data["pod"].append(tags.get("node_id", "").split("~")[2].split(".")[0])
     traces_df = pd.DataFrame(data=data).astype({
         "spanID": "string",
         "traceID": "string",
@@ -95,16 +97,21 @@ def collect_service_metrics(config):
     traces_df['process_time'] = traces_df.apply(lambda x: x['duration'] - children_durations.get(x['spanID'], 0),
                                                 axis=1)
 
-    groupby = traces_df.groupby(['serviceName', 'timestamp'])
-    count_df = groupby.size().reset_index(name='value')
-    count_df['metric_kind'] = 'count'
-    cost_df = groupby['duration'].mean().map(lambda _: _ * 1e-3).reset_index(name='value')
-    cost_df['metric_kind'] = 'cost'
-    proc_df = groupby['process_time'].mean().map(lambda _: _ * 1e-3).reset_index(name='value')
-    proc_df['metric_kind'] = 'proc'
-    succ_rate_df = (1 - groupby['error'].sum() / groupby.size()).reset_index(name='value')
-    succ_rate_df['metric_kind'] = 'succ_rate'
+    def get_business_metrics(attr="serviceName"):
+        groupby = traces_df.groupby([attr, 'timestamp'])
+        count_df = groupby.size().reset_index(name='value')
+        count_df['metric_kind'] = 'count'
+        cost_df = groupby['duration'].mean().map(lambda _: _ * 1e-3).reset_index(name='value')
+        cost_df['metric_kind'] = 'cost'
+        proc_df = groupby['process_time'].mean().map(lambda _: _ * 1e-3).reset_index(name='value')
+        proc_df['metric_kind'] = 'proc'
+        succ_rate_df = (1 - groupby['error'].sum() / groupby.size()).reset_index(name='value')
+        succ_rate_df['metric_kind'] = 'succ_rate'
 
-    ret_df = pd.concat([count_df, cost_df, proc_df, succ_rate_df])
-    ret_df['name'] = ret_df.apply(lambda _: f"{_['serviceName']}##{_['metric_kind']}", axis=1)
-    ret_df.to_pickle(config.output_dir / 'service_metrics.pkl')
+        ret_df = pd.concat([count_df, cost_df, proc_df, succ_rate_df])
+        ret_df['name'] = ret_df.apply(lambda _: f"{_[attr]}##{_['metric_kind']}", axis=1)
+        return ret_df
+    service_metrics = get_business_metrics("serviceName")
+    service_metrics.to_pickle(config.output_dir / 'service_business_metrics.pkl')
+    pod_metrics = get_business_metrics("pod")
+    pod_metrics.to_pickle(config.output_dir / 'pod_business_metrics.pkl')

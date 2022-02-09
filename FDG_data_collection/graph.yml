@@ -344,7 +344,10 @@
     - pod
   id: "{pod}"
   metrics:
-    - "{pod}##fake"
+    - "{pod}##count"
+    - "{pod}##cost"
+    - "{pod}##proc"
+    - "{pod}##succ_rate"
 
 - class: node
   type: Node
