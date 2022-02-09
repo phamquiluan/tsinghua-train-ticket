@@ -56,7 +56,10 @@ def collect_traces_from_spans(config: Config):
             data['duration'].append(span['duration'])
             data['error'].append(is_span_error(tags))
             data['kind'].append(tags.get("span.kind", None))
-            data["pod"].append(tags.get("node_id", "").split("~")[2].split(".")[0])
+            try:
+                data["pod"].append(tags.get("node_id", "x~x~unknown").split("~")[2].split(".")[0])
+            except IndexError:
+                data["pod"].append(None)
     traces_df = pd.DataFrame(data=data).astype({
         "spanID": "string",
         "traceID": "string",
@@ -83,7 +86,7 @@ def is_span_error(tags: dict) -> bool:
         return bool(re.match(r"(?i)(exception)|(error)|(fail)", tags[key].lower()))
     else:
         logging.error("Unrecognized tags: {}".format(pformat(tags.keys())))
-        raise RuntimeError(f"status code key not found in tags: {tags.keys()}")
+        return False
 
 
 @profile
