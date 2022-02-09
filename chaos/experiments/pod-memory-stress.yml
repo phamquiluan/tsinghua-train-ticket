@@ -1,7 +1,7 @@
 kind: StressChaos
 apiVersion: chaos-mesh.org/v1alpha1
 metadata:
-  namespace: chaos-testing
+  namespace: tt-chaos-experiments
   name: pod-memory-stress
 spec:
   selector:
