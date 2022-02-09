@@ -447,6 +447,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -571,6 +572,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -695,6 +697,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -749,6 +752,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -873,6 +877,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -935,6 +940,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -997,6 +1003,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1059,6 +1066,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1120,7 +1128,6 @@ spec:
         app: ts-news-service
         online-service-system: train-ticket
         injectable: "true"
-        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1153,17 +1160,6 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1245,6 +1241,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1307,6 +1304,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1431,6 +1429,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1493,6 +1492,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1555,6 +1555,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1741,6 +1742,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1803,6 +1805,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1865,6 +1868,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1989,6 +1993,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2114,6 +2119,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2176,6 +2182,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2238,6 +2245,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2362,6 +2370,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        network-chaos: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2485,7 +2494,6 @@ spec:
         app: ts-voucher-service
         online-service-system: train-ticket
         injectable: "true"
-        jmx-exporter: enabled
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2519,17 +2527,6 @@ spec:
           periodSeconds: 60
           timeoutSeconds: 5
           failureThreshold: 30
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: v1

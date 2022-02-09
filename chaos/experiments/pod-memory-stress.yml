@@ -9,7 +9,8 @@ spec:
       - tt
     labelSelectors:
       injectable: 'true'
-  mode: one
+  mode: fixed
+  value: '1'
   stressors:
     memory:
       workers: 1

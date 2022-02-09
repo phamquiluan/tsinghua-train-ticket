@@ -1,18 +1,21 @@
-kind: StressChaos
+kind: NetworkChaos
 apiVersion: chaos-mesh.org/v1alpha1
 metadata:
   namespace: tt-chaos-experiments
-  name: pod-cpu-stress
+  name: pod-network-delay
 spec:
   selector:
     namespaces:
       - tt
     labelSelectors:
       injectable: 'true'
+      network-chaos: enabled
   mode: fixed
   value: '1'
-  stressors:
-    cpu:
-      workers: 2
-      load: 100
-  duration: '5m'
+  action: delay
+  duration: 5m
+  delay:
+    latency: 500ms
+    correlation: '0'
+    jitter: 100ms
+  direction: to
