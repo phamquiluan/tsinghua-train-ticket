@@ -22,6 +22,8 @@ def main():
         experiment_type = "pod-cpu-stress"
     elif current_dt.hour in {6, 7}:
         experiment_type = "pod-memory-stress"
+    elif current_dt.hour in {8, 9}:
+        experiment_type = "pod-failure"
     elif current_dt.hour in {18, 19}:
         experiment_type = "pod-network-delay"
     elif current_dt.hour in {20, 21}:

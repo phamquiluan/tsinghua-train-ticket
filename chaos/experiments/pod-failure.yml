@@ -1,0 +1,16 @@
+kind: PodChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: tt-chaos-experiments
+  name: pod-failure
+spec:
+  selector:
+    namespaces:
+      - tt
+    labelSelectors:
+      injectable: 'true'
+  mode: fixed
+  value: '1'
+  action: pod-failure
+  duration: 5m
+  gracePeriod: 0
