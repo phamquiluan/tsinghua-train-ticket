@@ -42,24 +42,24 @@ def main():
         f"--output_dir '{(output_dir / 'chaos').resolve()}'"
     )
     print(apply_chaos_cmd)
-    # print(subprocess.run(shlex.split(apply_chaos_cmd), capture_output=True).stdout.decode())
-    # time.sleep(60 * 5)
+    print(subprocess.run(shlex.split(apply_chaos_cmd), capture_output=True).stdout.decode())
+    time.sleep(60 * 11)
     reset_cmd = (
         f"bash {(BASE /'deployment'/'kubernetes-manifests'/'k8s-with-jaeger'/'reset.sh').resolve()}"
     )
-    # reset_job = subprocess.Popen(shlex.split(reset_cmd))
+    reset_job = subprocess.Popen(shlex.split(reset_cmd))
 
     collect_cmd = (
         f"python3 {(BASE/'FDG_data_collection'/'run_collect_metrics.py').resolve()} "
         f"--begin_time='{((current_dt - timedelta(hours=1)).strftime('%Y-%m-%d %H:%M'))}' "
-        f"--end_time='{((current_dt + timedelta(minutes=5)).strftime('%Y-%m-%d %H:%M'))}' "
+        f"--end_time='{((current_dt + timedelta(minutes=10)).strftime('%Y-%m-%d %H:%M'))}' "
         f"--output_dir '{(output_dir / 'metrics').resolve()}'"
     )
     print(reset_cmd)
     print(collect_cmd)
-    # collect_job = subprocess.Popen(shlex.split(collect_cmd))
-    # reset_job.communicate()
-    # collect_job.communicate()
+    collect_job = subprocess.Popen(shlex.split(collect_cmd))
+    reset_job.communicate()
+    collect_job.communicate()
 
 
 if __name__ == '__main__':
