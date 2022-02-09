@@ -41,11 +41,12 @@ class Config(Tap):
 
         if self.output_dir is None:
             self.output_dir = Path(f"./collected_metrics/{self.begin_time.isoformat()}-{self.end_time.isoformat()}")
+        self.output_dir = self.output_dir.resolve()
         logger.info(f"{self.output_dir=}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
         assert self.es is None
-        self.es = Elasticsearch(self.es_url)
+        self.es = Elasticsearch(self.es_url, timeout=60)
 
     def configure(self) -> None:
         self.add_argument('--begin_time', type=parse_datetime)

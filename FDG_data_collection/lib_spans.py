@@ -1,9 +1,8 @@
+import gzip
 import json
 import logging
 import re
-from collections import defaultdict
 from pprint import pformat
-from typing import Dict
 
 import pandas as pd
 from pyprof import profile
@@ -16,17 +15,28 @@ from utils import tags_dict
 
 @profile
 def collect_spans(config: Config):
-    query_index_by_time_range_and_save_to_file(
-        es=config.es, index=config.es_index,
-        min_time=config.begin_time, max_time=config.end_time,
-        output_file=config.output_dir / "spans.txt"
-    )
+    with gzip.open(config.output_dir / "spans.txt.gz", "wt") as f:
+        query_index_by_time_range_and_save_to_file(
+            es=config.es, index=config.es_index,
+            min_time=config.begin_time, max_time=config.end_time,
+            output_file=f
+        )
 
 
 @profile
 def collect_traces_from_spans(config: Config):
-    traces: defaultdict[str, Dict[str, Dict]] = defaultdict(dict)
-    with open(config.output_dir / "spans.txt", "r") as f:
+    data = {
+        "spanID": [],
+        "traceID": [],
+        "timestamp": [],
+        "serviceName": [],
+        "operationName": [],
+        "parentSpanID": [],
+        "duration": [],
+        "error": [],
+        "kind": [],
+    }
+    with gzip.open(config.output_dir / "spans.txt.gz", "r") as f:
         for line in tqdm(f, desc="reading spans"):
             span = json.loads(line)
             trace_id = span["traceID"]
@@ -36,20 +46,16 @@ def collect_traces_from_spans(config: Config):
                 if reference['refType'] == 'CHILD_OF':
                     parent_span_id = reference['spanID']
             tags = tags_dict(span['tags'])
-            traces[trace_id][span_id] = {
-                "spanID": span_id,
-                "traceID": trace_id,
-                "timestamp": span["startTime"] * 1e3,
-                "serviceName": span['process']['serviceName'],
-                "operationName": span['operationName'],
-                'parentSpanID': parent_span_id,
-                "duration": span['duration'],
-                "error": is_span_error(tags),
-                "kind": tags.get("span.kind", None),
-            }
-    traces_df = pd.DataFrame.from_records(
-        sum([list(trace.values()) for trace in traces.values()], [])
-    ).astype({
+            data["spanID"].append(span_id)
+            data["traceID"].append(trace_id)
+            data['timestamp'].append(span['startTime'] * 1e3)
+            data["serviceName"].append(span['process']['serviceName'])
+            data['operationName'].append(span['operationName'])
+            data['parentSpanID'].append(parent_span_id)
+            data['duration'].append(span['duration'])
+            data['error'].append(is_span_error(tags))
+            data['kind'].append(tags.get("span.kind", None))
+    traces_df = pd.DataFrame(data=data).astype({
         "spanID": "string",
         "traceID": "string",
         "timestamp": "datetime64[ns, UTC]",

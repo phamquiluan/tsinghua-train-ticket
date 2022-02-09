@@ -1,0 +1,7 @@
+loguru
+pyprof
+pandas
+elasticsearch
+tqdm
+requests
+typed-argument-parser

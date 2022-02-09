@@ -1,11 +1,8 @@
 import json
 import random
-import threading
 import time
 from datetime import datetime
-from pathlib import Path
-from queue import Queue
-from typing import Optional, Iterator, Dict, List
+from typing import Optional, Iterator, Dict, List, TextIO
 
 from elasticsearch import Elasticsearch
 from loguru import logger
@@ -71,16 +68,15 @@ def query_index_by_time_range(
 
 def query_index_by_time_range_and_save_to_file(
         index: str, es: Elasticsearch,
-        output_file: Path,
+        output_file: TextIO,
         min_time: Optional[datetime] = None, max_time: Optional[datetime] = None,
         step: int = 10000,
 ):
-    with open(output_file, 'w+') as f:
-        with BackgroundTextWriter(f) as writer:
-            span_count = 0
-            for batch in query_index_by_time_range(index, es, min_time, max_time, step):
-                for record in batch:
-                    span_count += 1
-                    writer(json.dumps(record['_source']))
-            logger.debug("Waiting for background writer to finish, span_count: {}".format(span_count))
-        logger.debug("Background writer finished")
+    with BackgroundTextWriter(output_file) as writer:
+        span_count = 0
+        for batch in query_index_by_time_range(index, es, min_time, max_time, step):
+            for record in batch:
+                span_count += 1
+                writer(json.dumps(record['_source']))
+        logger.debug("Waiting for background writer to finish, span_count: {}".format(span_count))
+    logger.debug("Background writer finished")
