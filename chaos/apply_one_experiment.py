@@ -37,10 +37,8 @@ class Config(tap.Tap):
 BASE_DIR = Path(__file__).resolve().parent
 
 
-def apply_experiment(config: Config, exp_config_path: Path):
+def apply_experiment(config: Config, exp_config: Dict):
     # apply k8s config
-    with open(exp_config_path, "r") as f:
-        exp_config: Dict = load(f, Loader=CLoader)
     namespace = exp_config["metadata"]["namespace"]
     name = exp_config["metadata"]["name"]
     kind = exp_config["kind"]
@@ -55,7 +53,8 @@ def apply_experiment(config: Config, exp_config_path: Path):
             input=dump(exp_config), text=True,
         )
         # copy config
-        shutil.copy(exp_config_path, config.output_dir / exp_config_path.name)
+        with open(config.output_dir / "chaos.yml", "w+") as f:
+            dump(exp_config, f)
         # wait for injection end
         while True:
             pod_description: Dict = json.loads(subprocess.getoutput(
@@ -88,7 +87,10 @@ def apply_experiment(config: Config, exp_config_path: Path):
     except Exception as e:
         logger.exception(f"Encounter error when applying an experiment: {e}", exception=e)
     finally:
-        os.system(f"kubectl --kubeconfig {config.kube_config} delete -f {exp_config_path}")
+        subprocess.run(
+            shlex.split(f"kubectl --kubeconfig {config.kube_config} delete -f -"),
+            input=dump(exp_config), text=True,
+        )
 
 
 NODE_MAP = {
@@ -130,13 +132,12 @@ def get_ground_truths(config: Config):
 def main(config: Config):
     logger.add(config.output_dir / "chaos_experiment.log", mode="a")
     if config.experiment_type in {'node-cpu-stress', "node-memory-stress"}:
-        exp_config_path = random.choice(list((BASE_DIR / 'experiments' / config.experiment_type).glob("*.yml")))
+        with open(random.choice(list((BASE_DIR / 'experiments' / config.experiment_type).glob("*.yml"))), "r") as f:
+            exp_config: Dict = load(f, Loader=CLoader)
     else:
-        exp_config_path = BASE_DIR / "experiments" / f"{config.experiment_type}.yml"
-    if not exp_config_path.exists():
-        raise RuntimeError(f"{exp_config_path=} does not exist")
-    logger.info(f"Applying {config.experiment_type} config: {exp_config_path}")
-    apply_experiment(config, exp_config_path)
+        with open(BASE_DIR / "experiments" / f"{config.experiment_type}.yml", "r") as f:
+            exp_config: Dict = load(f, Loader=CLoader)
+    apply_experiment(config, exp_config)
     ground_truths = get_ground_truths(config)
     logger.info(f"{ground_truths=}")
     with open(config.output_dir / "ground_truths.json", "w+") as f:

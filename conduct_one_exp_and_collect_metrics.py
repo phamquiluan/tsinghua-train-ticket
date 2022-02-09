@@ -16,13 +16,13 @@ def main():
     pod_number = random.choices([1, 2, 3], weights=[0.9, 0.09, 0.01])[0]
     print(f"{pod_number=}")
     # 00:00 is for reset
-    if current_dt.hour in {1, 2}:
+    if current_dt.hour in {1, 2, 17, 18}:
         experiment_type = "node-cpu-stress"
-    elif current_dt.hour in {3, 4}:
+    elif current_dt.hour in {3, 4, 19, 20}:
         experiment_type = "node-memory-stress"
-    elif current_dt.hour in {5, 6}:
+    elif current_dt.hour in {5, 6, 21, 22}:
         experiment_type = "pod-cpu-stress"
-    elif current_dt.hour in {7, 8}:
+    elif current_dt.hour in {7, 8, 23}:
         experiment_type = "pod-memory-stress"
     elif current_dt.hour in {9, 10}:
         experiment_type = "pod-failure"
@@ -35,7 +35,7 @@ def main():
     else:
         raise RuntimeError(f"Invalid {current_dt=}")
     if experiment_type is not None:
-        output_dir = (BASE / 'output' / f"{current_dt.strftime('%H-at-%Y-%m-%d-%H-%M')}").resolve()
+        output_dir = (BASE / 'output' / f"{experiment_type}-at-{current_dt.strftime('%Y-%m-%d-%H-%M')}").resolve()
         print(f"{output_dir=}")
         apply_chaos_cmd = (
             f"python3 {(BASE / 'chaos' / 'apply_one_experiment.py').resolve()} "
