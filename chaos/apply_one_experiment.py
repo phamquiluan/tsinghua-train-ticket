@@ -119,6 +119,8 @@ def get_ground_truths(config: Config):
         return [f"{_.split('/')[1]}" for _ in targets]  # Pod
     elif config.experiment_type == "pod-network-loss":
         return [f"{_.split('/')[1]}" for _ in targets]  # Pod
+    elif config.experiment_type == "pod-network-corrupt":
+        return [f"{_.split('/')[1]}" for _ in targets]  # Pod
     else:
         raise NotImplementedError(f"{config.experiment_type=}")
 

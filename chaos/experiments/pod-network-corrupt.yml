@@ -1,0 +1,20 @@
+kind: NetworkChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: tt-chaos-experiments
+  name: pod-network-corrupt
+spec:
+  selector:
+    namespaces:
+      - tt
+    labelSelectors:
+      injectable: 'true'
+      network-chaos: enabled
+  mode: fixed
+  value: '1'
+  action: corrupt
+  duration: 5m
+  corrupt:
+    corrupt: '50'
+    correlation: '0'
+  direction: to

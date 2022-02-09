@@ -1,0 +1,20 @@
+kind: NetworkChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: tt-chaos-experiments
+  name: pod-network-loss
+spec:
+  selector:
+    namespaces:
+      - tt
+    labelSelectors:
+      injectable: 'true'
+      network-chaos: enabled
+  mode: fixed
+  value: '1'
+  action: loss
+  duration: 5m
+  loss:
+    loss: '50'
+    correlation: '0'
+  direction: to

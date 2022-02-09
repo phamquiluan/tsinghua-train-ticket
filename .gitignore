@@ -33,3 +33,5 @@ ENV/
 env.bak/
 venv.bak/
 
+
+kube.conf
