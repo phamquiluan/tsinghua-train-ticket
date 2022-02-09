@@ -1,9 +1,11 @@
 import json
 import os
 import random
+import re
 import shutil
 import subprocess
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Literal, Dict
 
@@ -23,7 +25,7 @@ class Config(tap.Tap):
 
     def process_args(self) -> None:
         if self.output_dir is None:
-            self.output_dir = Path(f"./applied_chaos_experiments/{time.time()}")
+            self.output_dir = Path(f"./applied_chaos_experiments/{self.experiment_type}-{datetime.now()}")
         self.output_dir = self.output_dir.resolve()
         logger.info(f"{self.output_dir=}")
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -71,6 +73,34 @@ def apply_experiment(config: Config, exp_config_path: Path):
         os.system(f"kubectl --kubeconfig {config.kube_config} delete -f {exp_config_path}")
 
 
+NODE_MAP = {
+    f"http://lzy-k8s-{i}.cluster.peidan.me:22777": f"node{i}" for i in range(1, 7)
+}
+
+
+def get_ground_truths(config: Config):
+    events_path = config.output_dir / "events.txt"
+    if not events_path.exists():
+        logger.error(f"{events_path=} does not exist")
+        return []
+    targets = []
+    with open(events_path, "r") as f:
+        for line in f:
+            match = re.match(r".*Successfully apply chaos for (?P<target>\S+)", line)
+            if match:
+                targets.append(match.group("target"))
+    if config.experiment_type in {"pod-cpu-stress", "pod-cpu-stress-multiple"}:
+        return [f"{_.split('/')[1]} CPU" for _ in targets]
+    elif config.experiment_type in {"pod-memory-stress", "pod-memory-stress-multiple"}:
+        return [f"{_.split('/')[1]} Memory" for _ in targets]
+    elif config.experiment_type in {"node-cpu-stress"}:
+        return [f"{NODE_MAP[_]} CPU" for _ in targets]
+    elif config.experiment_type in {"node-memory-stress"}:
+        return [f"{NODE_MAP[_]} Memory" for _ in targets]
+    else:
+        raise NotImplementedError(f"{config.experiment_type=}")
+
+
 def main(config: Config):
     logger.add(config.output_dir / "chaos_experiment.log", mode="a")
     if config.experiment_type in {'node-cpu-stress', "node-memory-stress"}:
@@ -83,8 +113,10 @@ def main(config: Config):
         raise NotImplementedError(f"Experiment type {config.experiment_type} is not implemented")
     logger.info(f"Applying {config.experiment_type} config: {exp_config_path}")
     apply_experiment(config, exp_config_path)
-
-
+    ground_truths = get_ground_truths(config)
+    logger.info(f"{ground_truths=}")
+    with open(config.output_dir / "ground_truths.json", "w+") as f:
+        json.dump(ground_truths, f)
 
 
 if __name__ == '__main__':
