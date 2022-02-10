@@ -41,7 +41,7 @@ def main():
             f"python3 {(BASE / 'chaos' / 'apply_one_experiment.py').resolve()} "
             f"--experiment_type {experiment_type} "
             f"--selected_pod_number {pod_number} "
-            f"--kube_config kube.conf "
+            f"--kube_config {(BASE / 'kube.conf').resolve()} "
             f"--output_dir '{(output_dir / 'chaos').resolve()}'"
         )
         print(apply_chaos_cmd)
@@ -51,7 +51,8 @@ def main():
             f"python3 {(BASE/'FDG_data_collection'/'run_collect_metrics.py').resolve()} "
             f"--begin_time='{((current_dt - timedelta(hours=1)).strftime('%Y-%m-%d %H:%M'))}' "
             f"--end_time='{((current_dt + timedelta(minutes=10)).strftime('%Y-%m-%d %H:%M'))}' "
-            f"--output_dir '{(output_dir / 'metrics').resolve()}'"
+            f"--output_dir '{(output_dir / 'metrics').resolve()}' "
+            f"--kube_config {(BASE / 'kube.conf').resolve()} "
         )
         print(collect_cmd)
         collect_job = subprocess.Popen(shlex.split(collect_cmd))
