@@ -35,6 +35,7 @@ spec:
       containers:
       - name: bots
         image: docker.peidan.me/lizytalk/train-ticket-bot:latest
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: "1000m"
@@ -42,7 +43,6 @@ spec:
           requests:
             cpu: "100m"
             memory: "200Mi"
-        imagePullPolicy: IfNotPresent
         command: ["python3"]
         args: [
             "bot.py", "--username", "$(USERNAME)", "--password", "bot",
