@@ -21,4 +21,4 @@ bash wait_for.sh pod -n tt
 kubectl apply -n tt -f ts-deployment-part3.yml
 bash wait_for.sh pod -n tt
 
-docker run --rm --entrypoint "" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py || "failed to add users"
+docker run --rm --entrypoint "" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py || echo "failed to add users"

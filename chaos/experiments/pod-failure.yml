@@ -9,6 +9,7 @@ spec:
       - tt
     labelSelectors:
       injectable: 'true'
+      FDG-node-type: service
   mode: fixed
   value: '1'
   action: pod-failure

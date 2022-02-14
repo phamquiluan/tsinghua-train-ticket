@@ -27,7 +27,7 @@ def get_admin_token():
 
     try:
         return response.json()['data']['token']
-    except TypeError as e:
+    except Exception as e:
         print(response.text)
         raise e
 
