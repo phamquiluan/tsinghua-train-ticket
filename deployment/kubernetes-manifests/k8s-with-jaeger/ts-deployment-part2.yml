@@ -14,6 +14,7 @@ spec:
         app: ts-avatar-service
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -56,6 +57,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -120,6 +122,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -183,6 +186,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -246,6 +250,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -309,6 +314,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -372,6 +378,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -436,6 +443,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -498,6 +506,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -561,6 +570,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -623,6 +633,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -686,6 +697,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -741,6 +753,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -803,6 +816,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -866,6 +880,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -929,6 +944,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -992,6 +1008,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1055,6 +1072,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1116,6 +1134,7 @@ spec:
         app: ts-news-service
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1167,6 +1186,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1230,6 +1250,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1293,6 +1314,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1355,6 +1377,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1418,6 +1441,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1481,6 +1505,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1544,6 +1569,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1606,6 +1632,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1668,6 +1695,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1731,6 +1759,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1794,6 +1823,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1857,6 +1887,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1919,6 +1950,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -1982,6 +2014,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2043,6 +2076,7 @@ spec:
         app: ts-ticket-office-service
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2096,6 +2130,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2159,6 +2194,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2222,6 +2258,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2284,6 +2321,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2347,6 +2385,7 @@ spec:
         injectable: "true"
         jmx-exporter: enabled
         network-chaos: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2409,6 +2448,7 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
@@ -2470,6 +2510,7 @@ spec:
         app: ts-voucher-service
         online-service-system: train-ticket
         injectable: "true"
+        FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
     spec:
