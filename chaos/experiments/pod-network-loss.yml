@@ -15,6 +15,6 @@ spec:
   action: loss
   duration: 5m
   loss:
-    loss: '50'
+    loss: '90'
     correlation: '0'
   direction: to

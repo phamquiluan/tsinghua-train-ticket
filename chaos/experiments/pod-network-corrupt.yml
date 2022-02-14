@@ -15,6 +15,6 @@ spec:
   action: corrupt
   duration: 5m
   corrupt:
-    corrupt: '50'
+    corrupt: '90'
     correlation: '0'
   direction: to

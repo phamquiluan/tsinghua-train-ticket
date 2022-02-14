@@ -15,7 +15,7 @@ spec:
   action: delay
   duration: 5m
   delay:
-    latency: 500ms
+    latency: 6s
     correlation: '0'
-    jitter: 100ms
+    jitter: 1s
   direction: to
