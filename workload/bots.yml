@@ -25,7 +25,7 @@ spec:
     matchLabels:
       app: bots # has to match .spec.template.metadata.labels
   serviceName: "bots"
-  replicas: 24 # by default is 1
+  replicas: 4 # by default is 1
   template:
     metadata:
       labels:

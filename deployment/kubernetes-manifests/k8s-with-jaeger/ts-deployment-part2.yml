@@ -879,7 +879,6 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
-        network-chaos: enabled
         FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
@@ -1440,7 +1439,6 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
-        network-chaos: enabled
         FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
@@ -2193,7 +2191,6 @@ spec:
         online-service-system: train-ticket
         injectable: "true"
         jmx-exporter: enabled
-        network-chaos: enabled
         FDG-node-type: service
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
