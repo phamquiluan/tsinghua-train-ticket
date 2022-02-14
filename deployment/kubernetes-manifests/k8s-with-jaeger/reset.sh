@@ -2,6 +2,7 @@
 
 # shellcheck disable=SC2164
 cd "$(dirname "$0")"
+export KUBECONFIG=/etc/kubernetes/admin.conf
 
 kubectl delete -n tt -f ts-deployment-part3.yml
 kubectl delete -n tt -f ts-deployment-part2.yml
