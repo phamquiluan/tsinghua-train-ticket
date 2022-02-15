@@ -21,7 +21,7 @@ spec:
       containers:
       - name: ts-avatar-service
         image: docker.peidan.me/lizytalk/ts-avatar-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 17001
         - name: metrics
@@ -64,7 +64,7 @@ spec:
       containers:
       - name: ts-admin-basic-info-service
         image: docker.peidan.me/lizytalk/ts-admin-basic-info-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18767
         - name: metrics
@@ -129,7 +129,7 @@ spec:
       containers:
       - name: ts-admin-order-service
         image: docker.peidan.me/lizytalk/ts-admin-order-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16112
         - name: metrics
@@ -193,7 +193,7 @@ spec:
       containers:
       - name: ts-admin-route-service
         image: docker.peidan.me/lizytalk/ts-admin-route-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16113
         - name: metrics
@@ -257,7 +257,7 @@ spec:
       containers:
       - name: ts-admin-travel-service
         image: docker.peidan.me/lizytalk/ts-admin-travel-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16114
         - name: metrics
@@ -321,7 +321,7 @@ spec:
       containers:
       - name: ts-admin-user-service
         image: docker.peidan.me/lizytalk/ts-admin-user-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16115
         - name: metrics
@@ -385,7 +385,7 @@ spec:
       containers:
       - name: ts-assurance-service
         image: docker.peidan.me/lizytalk/ts-assurance-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18888
         - name: metrics
@@ -450,7 +450,7 @@ spec:
       containers:
       - name: ts-basic-service
         image: docker.peidan.me/lizytalk/ts-basic-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15680
         - name: metrics
@@ -513,7 +513,7 @@ spec:
       containers:
       - name: ts-cancel-service
         image: docker.peidan.me/lizytalk/ts-cancel-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18885
         - name: metrics
@@ -577,7 +577,7 @@ spec:
       containers:
       - name: ts-config-service
         image: docker.peidan.me/lizytalk/ts-config-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15679
         - name: metrics
@@ -640,7 +640,7 @@ spec:
       containers:
       - name: ts-consign-price-service
         image: docker.peidan.me/lizytalk/ts-consign-price-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16110
         - name: metrics
@@ -704,7 +704,7 @@ spec:
       containers:
       - name: ts-consign-service
         image: docker.peidan.me/lizytalk/ts-consign-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16111
         - name: metrics
@@ -760,7 +760,7 @@ spec:
       containers:
       - name: ts-contacts-service
         image: docker.peidan.me/lizytalk/ts-contacts-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12347
         - name: metrics
@@ -823,7 +823,7 @@ spec:
       containers:
       - name: ts-execute-service
         image: docker.peidan.me/lizytalk/ts-execute-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12386
         - name: metrics
@@ -886,7 +886,7 @@ spec:
       containers:
       - name: ts-food-map-service
         image: docker.peidan.me/lizytalk/ts-food-map-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18855
         - name: metrics
@@ -950,7 +950,7 @@ spec:
       containers:
       - name: ts-food-service
         image: docker.peidan.me/lizytalk/ts-food-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18856
         - name: metrics
@@ -1014,7 +1014,7 @@ spec:
       containers:
       - name: ts-inside-payment-service
         image: docker.peidan.me/lizytalk/ts-inside-payment-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18673
         - name: metrics
@@ -1078,7 +1078,7 @@ spec:
       containers:
       - name: ts-auth-service
         image: docker.peidan.me/lizytalk/ts-auth-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12340
         - name: metrics
@@ -1140,7 +1140,7 @@ spec:
       containers:
       - name: ts-news-service
         image: docker.peidan.me/lizytalk/ts-news-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12862
         - name: metrics
@@ -1192,7 +1192,7 @@ spec:
       containers:
       - name: ts-notification-service
         image: docker.peidan.me/lizytalk/ts-notification-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 17853
         - name: metrics
@@ -1256,7 +1256,7 @@ spec:
       containers:
       - name: ts-order-other-service
         image: docker.peidan.me/lizytalk/ts-order-other-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12032
         - name: metrics
@@ -1320,7 +1320,7 @@ spec:
       containers:
       - name: ts-order-service
         image: docker.peidan.me/lizytalk/ts-order-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12031
         - name: metrics
@@ -1383,7 +1383,7 @@ spec:
       containers:
       - name: ts-payment-service
         image: docker.peidan.me/lizytalk/ts-payment-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 19001
         - name: metrics
@@ -1446,7 +1446,7 @@ spec:
       containers:
       - name: ts-preserve-other-service
         image: docker.peidan.me/lizytalk/ts-preserve-other-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14569
         - name: metrics
@@ -1510,7 +1510,7 @@ spec:
       containers:
       - name: ts-preserve-service
         image: docker.peidan.me/lizytalk/ts-preserve-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14568
         - name: metrics
@@ -1574,7 +1574,7 @@ spec:
       containers:
       - name: ts-price-service
         image: docker.peidan.me/lizytalk/ts-price-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16579
         - name: metrics
@@ -1637,7 +1637,7 @@ spec:
       containers:
       - name: ts-rebook-service
         image: docker.peidan.me/lizytalk/ts-rebook-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18886
         - name: metrics
@@ -1700,7 +1700,7 @@ spec:
       containers:
       - name: ts-route-plan-service
         image: docker.peidan.me/lizytalk/ts-route-plan-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14578
         - name: metrics
@@ -1764,7 +1764,7 @@ spec:
       containers:
       - name: ts-route-service
         image: docker.peidan.me/lizytalk/ts-route-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 11178
         - name: metrics
@@ -1828,7 +1828,7 @@ spec:
       containers:
       - name: ts-seat-service
         image: docker.peidan.me/lizytalk/ts-seat-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18898
         - name: metrics
@@ -1892,7 +1892,7 @@ spec:
       containers:
       - name: ts-security-service
         image: docker.peidan.me/lizytalk/ts-security-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 11188
         - name: metrics
@@ -1955,7 +1955,7 @@ spec:
       containers:
       - name: ts-user-service
         image: docker.peidan.me/lizytalk/ts-user-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12342
         - name: metrics
@@ -2019,7 +2019,7 @@ spec:
       containers:
       - name: ts-station-service
         image: docker.peidan.me/lizytalk/ts-station-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12345
         - name: metrics
@@ -2081,7 +2081,7 @@ spec:
       containers:
       - name: ts-ticket-office-service
         image: docker.peidan.me/lizytalk/ts-ticket-office-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16108
         - name: metrics
@@ -2135,7 +2135,7 @@ spec:
       containers:
       - name: ts-ticketinfo-service
         image: docker.peidan.me/lizytalk/ts-ticketinfo-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15681
         - name: metrics
@@ -2198,7 +2198,7 @@ spec:
       containers:
       - name: ts-train-service
         image: docker.peidan.me/lizytalk/ts-train-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14567
         - name: metrics
@@ -2262,7 +2262,7 @@ spec:
       containers:
       - name: ts-travel2-service
         image: docker.peidan.me/lizytalk/ts-travel2-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16346
         - name: metrics
@@ -2325,7 +2325,7 @@ spec:
       containers:
       - name: ts-travel-plan-service
         image: docker.peidan.me/lizytalk/ts-travel-plan-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14322
         - name: metrics
@@ -2388,7 +2388,7 @@ spec:
       containers:
       - name: ts-travel-service
         image: docker.peidan.me/lizytalk/ts-travel-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12346
         - name: metrics
@@ -2451,7 +2451,7 @@ spec:
       containers:
       - name: ts-verification-code-service
         image: docker.peidan.me/lizytalk/ts-verification-code-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15678
         - name: metrics
@@ -2513,7 +2513,7 @@ spec:
       containers:
       - name: ts-voucher-service
         image: docker.peidan.me/lizytalk/ts-voucher-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16101
         - name: metrics
