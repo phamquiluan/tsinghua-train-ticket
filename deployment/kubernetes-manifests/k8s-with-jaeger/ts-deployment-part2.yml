@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: ts-avatar-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-avatar-service
   selector:
     matchLabels:
@@ -45,6 +46,7 @@ kind: StatefulSet
 metadata:
   name: ts-admin-basic-info-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-admin-basic-info-service
   selector:
     matchLabels:
@@ -110,6 +112,7 @@ kind: StatefulSet
 metadata:
   name: ts-admin-order-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-admin-order-service
   selector:
     matchLabels:
@@ -174,6 +177,7 @@ kind: StatefulSet
 metadata:
   name: ts-admin-route-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-admin-route-service
   selector:
     matchLabels:
@@ -238,6 +242,7 @@ kind: StatefulSet
 metadata:
   name: ts-admin-travel-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-admin-travel-service
   selector:
     matchLabels:
@@ -302,6 +307,7 @@ kind: StatefulSet
 metadata:
   name: ts-admin-user-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-admin-user-service
   selector:
     matchLabels:
@@ -366,6 +372,7 @@ kind: StatefulSet
 metadata:
   name: ts-assurance-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-assurance-service
   selector:
     matchLabels:
@@ -430,6 +437,7 @@ kind: StatefulSet
 metadata:
   name: ts-basic-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-basic-service
   selector:
     matchLabels:
@@ -494,6 +502,7 @@ kind: StatefulSet
 metadata:
   name: ts-cancel-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-cancel-service
   selector:
     matchLabels:
@@ -557,6 +566,7 @@ kind: StatefulSet
 metadata:
   name: ts-config-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-config-service
   selector:
     matchLabels:
@@ -621,6 +631,7 @@ kind: StatefulSet
 metadata:
   name: ts-consign-price-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-consign-price-service
   selector:
     matchLabels:
@@ -684,6 +695,7 @@ kind: StatefulSet
 metadata:
   name: ts-consign-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-consign-service
   selector:
     matchLabels:
@@ -740,6 +752,7 @@ kind: StatefulSet
 metadata:
   name: ts-contacts-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-contacts-service
   selector:
     matchLabels:
@@ -804,6 +817,7 @@ kind: StatefulSet
 metadata:
   name: ts-execute-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-execute-service
   selector:
     matchLabels:
@@ -867,6 +881,7 @@ kind: StatefulSet
 metadata:
   name: ts-food-map-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-food-map-service
   selector:
     matchLabels:
@@ -930,6 +945,7 @@ kind: StatefulSet
 metadata:
   name: ts-food-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-food-service
   selector:
     matchLabels:
@@ -994,6 +1010,7 @@ kind: StatefulSet
 metadata:
   name: ts-inside-payment-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-inside-payment-service
   selector:
     matchLabels:
@@ -1058,6 +1075,7 @@ kind: StatefulSet
 metadata:
   name: ts-auth-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-auth-service
   selector:
     matchLabels:
@@ -1122,6 +1140,7 @@ kind: StatefulSet
 metadata:
   name: ts-news-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-news-service
   selector:
     matchLabels:
@@ -1173,6 +1192,7 @@ kind: StatefulSet
 metadata:
   name: ts-notification-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-notification-service
   selector:
     matchLabels:
@@ -1236,6 +1256,7 @@ kind: StatefulSet
 metadata:
   name: ts-order-other-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-order-other-service
   selector:
     matchLabels:
@@ -1300,6 +1321,7 @@ kind: StatefulSet
 metadata:
   name: ts-order-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-order-service
   selector:
     matchLabels:
@@ -1364,6 +1386,7 @@ kind: StatefulSet
 metadata:
   name: ts-payment-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-payment-service
   selector:
     matchLabels:
@@ -1427,6 +1450,7 @@ kind: StatefulSet
 metadata:
   name: ts-preserve-other-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-preserve-other-service
   selector:
     matchLabels:
@@ -1490,6 +1514,7 @@ kind: StatefulSet
 metadata:
   name: ts-preserve-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-preserve-service
   selector:
     matchLabels:
@@ -1554,6 +1579,7 @@ kind: StatefulSet
 metadata:
   name: ts-price-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-price-service
   selector:
     matchLabels:
@@ -1618,6 +1644,7 @@ kind: StatefulSet
 metadata:
   name: ts-rebook-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-rebook-service
   selector:
     matchLabels:
@@ -1681,6 +1708,7 @@ kind: StatefulSet
 metadata:
   name: ts-route-plan-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-route-plan-service
   selector:
     matchLabels:
@@ -1744,6 +1772,7 @@ kind: StatefulSet
 metadata:
   name: ts-route-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-route-service
   selector:
     matchLabels:
@@ -1808,6 +1837,7 @@ kind: StatefulSet
 metadata:
   name: ts-seat-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-seat-service
   selector:
     matchLabels:
@@ -1872,6 +1902,7 @@ kind: StatefulSet
 metadata:
   name: ts-security-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-security-service
   selector:
     matchLabels:
@@ -1936,6 +1967,7 @@ kind: StatefulSet
 metadata:
   name: ts-user-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-user-service
   selector:
     matchLabels:
@@ -1999,6 +2031,7 @@ kind: StatefulSet
 metadata:
   name: ts-station-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-station-service
   selector:
     matchLabels:
@@ -2063,6 +2096,7 @@ kind: StatefulSet
 metadata:
   name: ts-ticket-office-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-ticket-office-service
   selector:
     matchLabels:
@@ -2115,6 +2149,7 @@ kind: StatefulSet
 metadata:
   name: ts-ticketinfo-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-ticketinfo-service
   selector:
     matchLabels:
@@ -2179,6 +2214,7 @@ kind: StatefulSet
 metadata:
   name: ts-train-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-train-service
   selector:
     matchLabels:
@@ -2242,6 +2278,7 @@ kind: StatefulSet
 metadata:
   name: ts-travel2-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-travel2-service
   selector:
     matchLabels:
@@ -2306,6 +2343,7 @@ kind: StatefulSet
 metadata:
   name: ts-travel-plan-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-travel-plan-service
   selector:
     matchLabels:
@@ -2369,6 +2407,7 @@ kind: StatefulSet
 metadata:
   name: ts-travel-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-travel-service
   selector:
     matchLabels:
@@ -2432,6 +2471,7 @@ kind: StatefulSet
 metadata:
   name: ts-verification-code-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-verification-code-service
   selector:
     matchLabels:
@@ -2495,6 +2535,7 @@ kind: StatefulSet
 metadata:
   name: ts-voucher-service
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-voucher-service
   selector:
     matchLabels:

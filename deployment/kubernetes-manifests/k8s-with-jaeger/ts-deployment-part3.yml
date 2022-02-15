@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: ts-ui-dashboard
 spec:
+  podManagementPolicy: Parallel
   serviceName: ts-ui-dashboard
   selector:
     matchLabels:
