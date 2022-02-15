@@ -21,6 +21,7 @@ metadata:
   name: bots
   namespace: train-ticket-bot
 spec:
+  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: bots # has to match .spec.template.metadata.labels

@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 import requests
 
-URL = os.environ.get('TRAIN_TICKET_URL', 'http://localhost:32677')
+URL = os.environ.get('TRAIN_TICKET_URL', 'http://127.0.0.1:32677')
 
 
 def get_admin_token():
@@ -26,7 +26,9 @@ def get_admin_token():
     response = requests.request("POST", url, headers=headers, data=payload)
 
     try:
-        return response.json()['data']['token']
+        token = response.json()['data']['token']
+        print(f"admin token: {token=}")
+        return token
     except Exception as e:
         print(response.text)
         raise e
@@ -41,17 +43,12 @@ def create_user(bot_id):
     payload = "{\"userName\":\"bots-bot_id\",\"password\":\"bot\",\"gender\":\"0\",\"email\":\"bots-bot_id@train-ticket1.peidan.me\",\"documentType\":\"0\",\"documentNum\":\"bot_id\"}".replace(
         "bot_id", str(bot_id))
     headers = {
-        'Connection': 'keep-alive',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
         'Accept': 'application/json, text/plain, */*',
-        'Authorization': 'Bearer   {token}'.format(token=TOKEN),
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 Edg/85.0.564.68',
+        'Authorization': 'Bearer {token}'.format(token=TOKEN),
         'Content-Type': 'application/json;charset=UTF-8',
-        'Origin': 'http://train-ticket1:32677',
-        'Referer': 'http://train-ticket1:32677/admin_user.html',
         'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-        'Cookie': 'JSESSIONID=AB07591BBBACD73784DD91730196B9FA; grafana_session=42deacba680f9c00f2385af30e8e38cf'
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode('utf8'))
