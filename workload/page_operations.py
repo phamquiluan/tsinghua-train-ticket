@@ -345,7 +345,7 @@ def booking_ticket_via_basic_search(driver):
     # click search button
     driver.find_element_by_id('travel_searching_button').click()
 
-    WebDriverWait(driver, 30).until(
+    WebDriverWait(driver, 60).until(
         expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'ticket_booking_button')), message='Timeout!!')
 
     trip_table_item = random.choice(
@@ -385,7 +385,7 @@ def bookingTicketViaAdvancedSearch(driver):
 
     # click search button
     driver.find_element_by_id('ad_search_booking_button').click()
-    WebDriverWait(driver, 30).until(
+    WebDriverWait(driver, 60).until(
         expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'ticket_booking_button')),
         message='Timeout!!')
     bookingButton = random.choice(driver.find_elements_by_class_name('ticket_booking_button')).click()

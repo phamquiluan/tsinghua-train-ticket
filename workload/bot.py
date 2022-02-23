@@ -1,23 +1,13 @@
-import gc
-import sys
-import time
+import argparse
 import math
 import random
-import threading
-import argparse
+import sys
+import time
 import traceback
-from concurrent.futures.process import ProcessPoolExecutor
 
-import loguru
 from loguru import logger
-
 from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains  # 导入模块
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from multiprocessing import Process
+
 from page_operations import PageOperations
 
 DEBUG_FLAG = True
@@ -26,10 +16,11 @@ BUBBLE_TIME = 0
 EXEC_CNT = 0
 PERIOD = 24 * 60 * 60
 PEAK_LIST = [
-    (0.4, 43200, 30000),
-    (0.9, 36000, 7200),
-    (0.9, 57600, 7200)
+    (1, 43200, 36000),
+    (0.2, 36000, 7200),
+    (0.2, 57600, 7200)
 ]
+
 
 def calc_prob(t):
     ret = 0
@@ -42,11 +33,13 @@ def calc_prob(t):
         ret += coef * math.exp(-dist * dist / (2 * sigma * sigma))
     return ret
 
+
 def current_prob():
     cur = time.localtime(time.time() + time.timezone + 28800)
     # always use UTF+8
     cur_sec = (cur.tm_hour * 60 + cur.tm_min) * 60 + cur.tm_sec
     return calc_prob(cur_sec)
+
 
 def emulate_user_behaviour(username, password, threads, main_page, binary_path="google-chrome"):
     option = webdriver.ChromeOptions()

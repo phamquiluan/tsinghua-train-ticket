@@ -84,15 +84,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:18767/adminbasic/contacts
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -150,15 +141,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16112/adminorder
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -215,15 +197,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16113/api/v1/adminrouteservice/adminroute
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -280,15 +253,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16114/api/v1/admintravelservice/admintravel
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -345,15 +309,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16115/api/v1/adminuserservice/users
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -410,15 +365,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:18888/api/v1/assuranceservice/assurances
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -476,14 +422,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 15680
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -540,14 +478,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18885
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -605,14 +535,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 15679
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -669,14 +591,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 16110
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -791,14 +705,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12347
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -855,14 +761,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12386
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -919,14 +817,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18855
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -984,14 +874,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18856
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1049,14 +931,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18673
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1114,14 +988,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12340
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1177,14 +1043,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12862
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -1230,14 +1088,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 17853
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1295,14 +1145,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12032
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1360,14 +1202,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /api/v1/orderservice/order/Wed%20Nov%2004%2008:00:00%20CST%202020/D1345
-            port: 12031
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1424,14 +1258,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 19001
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1488,14 +1314,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 14569
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1553,14 +1371,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 14568
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1618,14 +1428,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /api/v1/priceservice/prices
-            port: 16579
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1682,14 +1484,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18886
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1746,14 +1540,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 14578
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1811,14 +1597,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 11178
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1876,14 +1654,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 18898
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -1941,14 +1711,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 11188
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2005,14 +1767,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12342
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2070,14 +1824,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12345
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2133,15 +1879,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16108/getRegionList
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
 ---
 
 apiVersion: apps/v1
@@ -2188,14 +1925,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 15681
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2252,14 +1981,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 14567
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2317,14 +2038,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 16346
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2381,14 +2094,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 14322
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2445,14 +2150,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /swagger-ui.html
-            port: 12346
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2509,14 +2206,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /api/v1/verifycode/generate
-            port: 15678
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
         volumeMounts:
         - name: jmx-exporter
           mountPath: /JMX_exporter
@@ -2572,15 +2261,6 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-              - curl
-              - http://localhost:16101/getVoucher
-          initialDelaySeconds: 300
-          periodSeconds: 60
-          timeoutSeconds: 5
-          failureThreshold: 30
 ---
 
 apiVersion: v1
