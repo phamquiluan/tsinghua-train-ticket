@@ -33,7 +33,7 @@ bash deployment/kubernetes-manifests/k8s-with-jaeger/wait_for.sh pod -n tt
 
 wait
 
-max_retry=10
+max_retry=3600
 counter=0
 until docker run --rm --entrypoint "" -t -e TRAIN_TICKET_URL="http://$(hostname):32677" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py
 do
