@@ -1,3 +1,6 @@
+## Important Note
+Image name and node name are hardcoded. So remember to change them.
+
 ## Install TS
 
 1. build images
