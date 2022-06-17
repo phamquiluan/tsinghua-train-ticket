@@ -4,6 +4,11 @@
 This repo contains the source code, forked from https://github.com/fudanselab/train-ticket, and the deployment and data collection scripts used for [our FSE'22 paper](https://github.com/lizeyan/DejaVu).
 
 
+We deployed train-ticket on a five-node cluster. The nodes were named as `lzy-k8s-1.cluster.peidan.me`, `lzy-k8s-2.cluster.peidan.me`, etc.
+We built the images of micro-services ourselves and pushed them to a private registry (`docker.peidan.me`).
+We used crontab to periodically run fault injection tasks and collect data automatically.
+
+
 ## File Description
 |Path|Description|
 |---|---|
@@ -15,6 +20,7 @@ This repo contains the source code, forked from https://github.com/fudanselab/tr
 |`ts-*`|The micro-services' source code|
 |`workload/`|Load generator scripts|
 |`restart.sh`|A runnable script to delete and redeploy train-ticket|
+|`crontab.conf`|Crontab configuration to periodically run fault injection tasks|
 
 
 
