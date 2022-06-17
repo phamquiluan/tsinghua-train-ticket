@@ -24,20 +24,29 @@ build_docker () {
 
 build_docker &
 
-kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part1.yml
+until kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part1.yml
+do
+  sleep 30
+done
 bash deployment/kubernetes-manifests/k8s-with-jaeger/wait_for.sh pod -n tt
-kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part2.yml
+until kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part2.yml
+do
+  sleep 30
+done
 bash deployment/kubernetes-manifests/k8s-with-jaeger/wait_for.sh pod -n tt
-kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part3.yml
+until kubectl apply -n tt -f deployment/kubernetes-manifests/k8s-with-jaeger/ts-deployment-part3.yml
+do
+  sleep 30
+done
 bash deployment/kubernetes-manifests/k8s-with-jaeger/wait_for.sh pod -n tt
 
 wait
 
-max_retry=3600
+max_retry=10
 counter=0
 until docker run --rm --entrypoint "" -t -e TRAIN_TICKET_URL="http://$(hostname):32677" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py
 do
-   sleep 10
+   sleep 60
    [[ counter -eq $max_retry ]] && echo "Failed!" && exit 1
    echo "Trying again. Try #$counter"
    ((counter++))
