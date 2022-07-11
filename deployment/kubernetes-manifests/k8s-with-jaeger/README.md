@@ -1,6 +1,9 @@
 ## Important Note
 Image name and node name are hardcoded. So remember to change them.
 
+## Install k8s
+Refer to https://www.lizeyan.me/Install-K8s-6af38c1ff4e04b6d9ea9387a7a198b5b
+
 ## Install TS
 
 1. build images
