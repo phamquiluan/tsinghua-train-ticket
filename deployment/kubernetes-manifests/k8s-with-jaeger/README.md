@@ -17,8 +17,11 @@ I will put elastic-search and mongodb data on lzy-k8s-6, and I am not going to i
 2. ```bash
    kubectl apply -f es-jaeger.yml
    ```
+3. ```bash
+   kubectl apply -f mongo_pv.yml -n tt
+   ```
 
-4. apply the ts-deployment-part*.yml one by one
+4. apply the ts-deployment-part*.yml one by one in `tt` namespace.
 
 ## Install Prometheus
 

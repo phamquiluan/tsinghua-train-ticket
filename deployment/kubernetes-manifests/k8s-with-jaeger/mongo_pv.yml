@@ -1,0 +1,648 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-1
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-1
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-2
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-2
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-3
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-3
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-4
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-4
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-5
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-5
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-6
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-6
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-7
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-7
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-8
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-8
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-9
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-9
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-10
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-10
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-11
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-11
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-12
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-12
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-13
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-13
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-14
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-14
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-15
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-15
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-16
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-16
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-17
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-17
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-18
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-18
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-19
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-19
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-20
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-20
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-21
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-21
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-22
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-22
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-23
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-23
+    server: lzy-k8s-6.cluster.peidan.me
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-24
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  nfs:
+    path: /srv/mongo-pv-24
+    server: lzy-k8s-6.cluster.peidan.me
+---
+
+# PVCs
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-user-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-auth-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-route-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-contacts-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-order-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-order-other-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-config-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-station-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-train-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-travel-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-travel2-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-price-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-security-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-inside-payment-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-payment-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-assurance-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-ticket-office-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-voucher-mysql-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-food-map-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-consign-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-consign-price-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ts-food-mongo-pvc
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+
+---

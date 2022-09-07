@@ -26,6 +26,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -36,6 +39,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-user-mongo-pvc
 ---
 
 apiVersion: apps/v1
@@ -66,6 +73,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -76,6 +86,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-auth-mongo-pvc
 ---
 
 apiVersion: apps/v1
@@ -106,6 +120,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -116,6 +133,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-route-mongo-pvc
 
 ---
 
@@ -147,6 +168,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -157,6 +181,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-contacts-mongo-pvc
 
 ---
 
@@ -188,6 +216,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -198,6 +229,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-order-mongo-pvc
 
 ---
 
@@ -229,6 +264,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -239,6 +277,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-order-other-mongo-pvc
 
 ---
 
@@ -270,6 +312,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -280,6 +325,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-config-mongo-pvc
 
 ---
 
@@ -311,6 +360,9 @@ spec:
           requests:
             cpu: 2000m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -321,6 +373,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-station-mongo-pvc
 
 ---
 
@@ -352,6 +408,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -362,6 +421,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-train-mongo-pvc
 
 ---
 
@@ -393,6 +456,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -403,6 +469,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-travel-mongo-pvc
 
 ---
 
@@ -434,6 +504,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -444,6 +517,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-travel2-mongo-pvc
 
 ---
 
@@ -475,6 +552,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -485,6 +565,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-price-mongo-pvc
 
 ---
 
@@ -516,6 +600,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -526,6 +613,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-security-mongo-pvc
 
 ---
 
@@ -557,6 +648,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -567,6 +661,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-inside-payment-mongo-pvc
 
 ---
 
@@ -598,6 +696,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -608,6 +709,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-payment-mongo-pvc
 
 ---
 
@@ -639,6 +744,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -649,6 +757,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-assurance-mongo-pvc
 
 ---
 
@@ -680,6 +792,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -690,6 +805,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-ticket-office-mongo-pvc
 
 
 ---
@@ -726,6 +845,13 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-voucher-mysql-pvc
 ---
 
 apiVersion: apps/v1
@@ -756,6 +882,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -766,6 +895,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-food-map-mongo-pvc
 
 ---
 
@@ -797,6 +930,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -807,6 +943,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-consign-mongo-pvc
 
 ---
 
@@ -838,6 +978,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -848,6 +991,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-consign-price-mongo-pvc
 
 ---
 
@@ -879,6 +1026,9 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -889,6 +1039,10 @@ spec:
         ports:
           - name: metrics
             containerPort: 9216
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ts-food-mongo-pvc
 
 ---
 apiVersion: v1
