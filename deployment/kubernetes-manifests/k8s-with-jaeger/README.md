@@ -1,6 +1,11 @@
 ## Important Note
 Image name and node name are hardcoded. So remember to change them.
 
+
+## Preliminary
+I have five nodes, named lzy-k8s-1, lzy-k8s-2, lzy-k8s-3, lzy-k8s-4, lzy-k8s-6.
+I will put elastic-search and mongodb data on lzy-k8s-6, and I am not going to inject node-level faults on it.
+
 ## Install TS
 
 1. build images

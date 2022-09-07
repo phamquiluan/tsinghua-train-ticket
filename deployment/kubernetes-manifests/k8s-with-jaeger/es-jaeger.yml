@@ -41,14 +41,17 @@ spec:
     podTemplate:
       spec:
         nodeSelector:
-          kubernetes.io/hostname: lzy-k8s-4.cluster.peidan.me
+          kubernetes.io/hostname: lzy-k8s-6.cluster.peidan.me
         containers:
         - name: elasticsearch
           resources:
             requests:
-              memory: 4Gi
+              memory: 12Gi
             limits:
-              memory: 16Gi
+              memory: 28Gi
+          env:
+          - name: ES_JAVA_OPTS
+            value: "-Xms6g -Xmx6g"
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
