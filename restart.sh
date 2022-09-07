@@ -42,14 +42,16 @@ bash deployment/kubernetes-manifests/k8s-with-jaeger/wait_for.sh pod -n tt
 
 wait
 
-max_retry=10
-counter=0
-until docker run --rm --entrypoint "" -t -e TRAIN_TICKET_URL="http://$(hostname):32677" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py
-do
-   sleep 60
-   [[ counter -eq $max_retry ]] && echo "Failed!" && exit 1
-   echo "Trying again. Try #$counter"
-   ((counter++))
-done
+
+# 因为做了持久化，所以不需要每次来创建用户了
+#max_retry=10
+#counter=0
+#until docker run --rm --entrypoint "" -t -e TRAIN_TICKET_URL="http://$(hostname):32677" docker.peidan.me/lizytalk/train-ticket-bot:latest python3 create_users.py
+#do
+#   sleep 60
+#   [[ counter -eq $max_retry ]] && echo "Failed!" && exit 1
+#   echo "Trying again. Try #$counter"
+#   ((counter++))
+#done
 
 kubectl apply -n train-ticket-bot -f workload/bots.yml

@@ -57,7 +57,4 @@ def create_user(bot_id):
 
 
 with ThreadPoolExecutor(max_workers=10) as pool:
-    if not all(pool.map(create_user, range(0, 5))):
-        sys.exit(1)
-    else:
-        print("create users success")
+    pool.map(create_user, range(0, 99))

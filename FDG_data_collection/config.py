@@ -1,4 +1,5 @@
 import os
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -9,10 +10,22 @@ from pytz import timezone
 from tap import Tap
 
 
+def _try_to_get_es_password():
+    try:
+        return subprocess.getoutput(
+            "kubectl get secret es-jaeger-es-elastic-user -o go-template='{{.data.elastic | base64decode}}' -n istio-system")
+    # noinspection PyBroadException
+    except:
+        return ""
+
+
 class Config(Tap):
     prometheus_url: str = os.environ.get('PROMETHEUS_URL', "http://lzy-k8s-1.cluster.peidan.me:9090")
     es_url: str = os.environ.get(
-        'ES_URL', "http://elastic:1Je40I6x4Fu9T5mYXtk70K3l@lzy-k8s-1.cluster.peidan.me:9200"
+        'ES_URL',
+        f"http://elastic:"
+        f"{_try_to_get_es_password()}"
+        f"@lzy-k8s-1.cluster.peidan.me:9200"
     ),
     es_index: str = "jaeger-span-*"
     kube_config: str = os.environ.get('KUBECONFIG', "./kube.conf")

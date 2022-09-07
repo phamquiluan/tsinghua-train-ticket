@@ -9,6 +9,7 @@ from loguru import logger
 from tqdm import tqdm
 
 from background_writer import BackgroundTextWriter
+from utils import tags_dict
 
 
 def query_index_by_time_range(
@@ -77,6 +78,9 @@ def query_index_by_time_range_and_save_to_file(
         for batch in query_index_by_time_range(index, es, min_time, max_time, step):
             for record in batch:
                 span_count += 1
+                tags = tags_dict(record['_source']['tags'])
+                if tags.get("user_agent", "").startswith("Prometheus"):  # 过滤采集指标形成的traces
+                    continue
                 writer(json.dumps(record['_source']))
         logger.debug("Waiting for background writer to finish, span_count: {}".format(span_count))
     logger.debug("Background writer finished")
