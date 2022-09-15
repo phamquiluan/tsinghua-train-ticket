@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: train-ticket-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: train-ticket
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - train-ticket-gateway
+  http:
+    - route:
+      - destination:
+          host: ts-ui-dashboard
+          port:
+            number: 8080

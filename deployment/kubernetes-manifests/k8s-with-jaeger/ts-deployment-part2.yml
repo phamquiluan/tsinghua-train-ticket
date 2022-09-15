@@ -50,7 +50,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-basic-info-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -106,7 +106,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-order-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -161,7 +161,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-route-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -216,7 +216,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-travel-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -271,7 +271,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-user-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -326,7 +326,7 @@ spec:
   selector:
     matchLabels:
       app: ts-assurance-service
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:

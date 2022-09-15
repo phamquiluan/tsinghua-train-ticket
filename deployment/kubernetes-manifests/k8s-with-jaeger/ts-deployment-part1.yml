@@ -120,9 +120,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -168,9 +165,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -216,9 +210,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -264,9 +255,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -312,9 +300,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -360,9 +345,6 @@ spec:
           requests:
             cpu: 2000m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -408,9 +390,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -456,9 +435,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -504,9 +480,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -552,9 +525,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -600,9 +570,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -648,9 +615,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -696,9 +660,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -744,9 +705,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -792,9 +750,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -845,9 +800,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mysql-persistent-storage
-            mountPath: /var/lib/mysql
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
@@ -882,9 +834,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -930,9 +879,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -978,9 +924,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
@@ -1026,9 +969,6 @@ spec:
           requests:
             cpu: 50m
             memory: 100Mi
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
       - name: mongo-exporter
         image: percona/mongodb_exporter:0.20
         args: [
