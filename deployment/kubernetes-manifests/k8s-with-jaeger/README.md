@@ -1,6 +1,9 @@
 ## Important Note
 Image name and node name are hardcoded. So remember to change them.
 
+## Install k8s
+Refer to https://www.lizeyan.me/Install-K8s-6af38c1ff4e04b6d9ea9387a7a198b5b
+
 
 ## Preliminary
 I have five nodes, named lzy-k8s-1, lzy-k8s-2, lzy-k8s-3, lzy-k8s-4, lzy-k8s-6.
