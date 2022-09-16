@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: tt
+  name: http-fault-test
+spec:
+  hosts:
+    - ts-verification-code-service
+  http:
+    - fault:
+        abort:
+          httpStatus: 404
+          percentage:
+            value: 100
+      match:
+        - uri:
+            prefix: /api/v1/verifycode/verify/
+      route:
+        - destination:
+            host: ts-verification-code-service
+    - route:
+        - destination:
+            host: ts-verification-code-service

@@ -91,8 +91,9 @@ def is_span_error(tags: dict) -> bool:
 
 @profile
 def collect_service_metrics(config):
-    collect_spans(config)
-    collect_traces_from_spans(config)
+    # DEBUG
+    # collect_spans(config)
+    # collect_traces_from_spans(config)
     traces_df = pd.read_pickle(str((config.output_dir / "traces.pkl").resolve()))
     traces_df['timestamp'] = traces_df['timestamp'].dt.floor('min').dt.to_pydatetime()
     traces_df['timestamp'] = traces_df['timestamp'].map(lambda _: int(_.timestamp()))
@@ -118,3 +119,14 @@ def collect_service_metrics(config):
     service_metrics.to_pickle(config.output_dir / 'service_business_metrics.pkl')
     pod_metrics = get_business_metrics("pod")
     pod_metrics.to_pickle(config.output_dir / 'pod_business_metrics.pkl')
+
+    # get squeeze_metrics
+    def get_squeeze_metrics():
+        groupby = traces_df.groupby(['serviceName', 'pod', 'operationName', 'kind', 'timestamp'], observed=True)
+        count_df = groupby.size()
+        cost_df = groupby['duration'].mean().map(lambda _: _ * 1e-3)
+        proc_df = groupby['process_time'].mean().map(lambda _: _ * 1e-3)
+        succ_rate_df = (1 - groupby['error'].sum() / groupby.size())
+        return pd.DataFrame({"count": count_df, "cost": cost_df, "proc": proc_df, "succ": succ_rate_df})
+
+    get_squeeze_metrics().to_pickle(config.output_dir / 'squeeze_metrics.pkl')
