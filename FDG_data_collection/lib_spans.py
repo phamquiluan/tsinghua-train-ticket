@@ -36,6 +36,7 @@ def collect_traces_from_spans(config: Config):
         "error": [],
         "kind": [],
         "pod": [],
+        "method": [],
     }
     with gzip.open(config.output_dir / "spans.txt.gz", "r") as f:
         for line in tqdm(f, desc="reading spans"):
@@ -56,6 +57,7 @@ def collect_traces_from_spans(config: Config):
             data['duration'].append(span['duration'])
             data['error'].append(is_span_error(tags))
             data['kind'].append(tags.get("span.kind", None))
+            data["method"].append(tags.get("http.method", "unknown"))
             try:
                 data["pod"].append(tags.get("node_id", "x~x~unknown").split("~")[2].split(".")[0])
             except IndexError:
@@ -70,6 +72,7 @@ def collect_traces_from_spans(config: Config):
         "duration": "float",
         "error": "bool",
         "kind": "category",
+        "method": "category"
     })
     traces_df["timestamp"] = traces_df['timestamp'].dt.tz_convert("Asia/Shanghai")
     traces_df.to_pickle(str((config.output_dir / "traces.pkl").resolve()))
@@ -91,9 +94,8 @@ def is_span_error(tags: dict) -> bool:
 
 @profile
 def collect_service_metrics(config):
-    # DEBUG
-    # collect_spans(config)
-    # collect_traces_from_spans(config)
+    collect_spans(config)
+    collect_traces_from_spans(config)
     traces_df = pd.read_pickle(str((config.output_dir / "traces.pkl").resolve()))
     traces_df['timestamp'] = traces_df['timestamp'].dt.floor('min').dt.to_pydatetime()
     traces_df['timestamp'] = traces_df['timestamp'].map(lambda _: int(_.timestamp()))
@@ -115,6 +117,7 @@ def collect_service_metrics(config):
         ret_df = pd.concat([count_df, cost_df, proc_df, succ_rate_df])
         ret_df['name'] = ret_df.apply(lambda _: f"{_[attr]}##{_['metric_kind']}", axis=1)
         return ret_df
+
     service_metrics = get_business_metrics("serviceName")
     service_metrics.to_pickle(config.output_dir / 'service_business_metrics.pkl')
     pod_metrics = get_business_metrics("pod")
@@ -122,7 +125,10 @@ def collect_service_metrics(config):
 
     # get squeeze_metrics
     def get_squeeze_metrics():
-        groupby = traces_df.groupby(['serviceName', 'pod', 'operationName', 'kind', 'timestamp'], observed=True)
+        groupby = traces_df.groupby(
+            ['serviceName', 'pod', 'operationName', 'kind', "method", 'timestamp'],
+            observed=True
+        )
         count_df = groupby.size()
         cost_df = groupby['duration'].mean().map(lambda _: _ * 1e-3)
         proc_df = groupby['process_time'].mean().map(lambda _: _ * 1e-3)
