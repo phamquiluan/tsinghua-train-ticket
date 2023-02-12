@@ -37,3 +37,4 @@ venv.bak/
 
 kube.conf
 output/
+registry-data
