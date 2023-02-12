@@ -11,7 +11,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-1
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -26,7 +26,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-2
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -41,7 +41,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-3
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -56,7 +56,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-4
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -71,7 +71,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-5
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -86,7 +86,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-6
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -101,7 +101,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-7
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -116,7 +116,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-8
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -131,7 +131,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-9
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -146,7 +146,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-10
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -161,7 +161,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-11
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -176,7 +176,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-12
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -191,7 +191,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-13
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -206,7 +206,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-14
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -221,7 +221,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-15
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -236,7 +236,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-16
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -251,7 +251,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-17
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -266,7 +266,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-18
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -281,7 +281,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-19
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -296,7 +296,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-20
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -311,7 +311,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-21
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -326,7 +326,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-22
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -341,7 +341,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-23
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -356,7 +356,7 @@ spec:
   storageClassName: nfs
   nfs:
     path: /srv/mongo-pv-24
-    server: lzy-k8s-6.cluster.peidan.me
+    server: localhost
 ---
 
 # PVCs
