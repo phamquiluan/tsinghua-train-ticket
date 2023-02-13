@@ -8,10 +8,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-1
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-1
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -23,10 +22,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-2
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-2
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -38,10 +36,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-3
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-3
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -53,10 +50,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-4
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-4
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -68,10 +64,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-5
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-5
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -83,10 +78,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-6
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-6
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -98,10 +92,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-7
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-7
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -113,10 +106,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-8
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-8
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -127,11 +119,10 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-9
-    server: localhost
+  persistentVolumeReclaimPolicy: Recycle  
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-9
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -143,10 +134,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-10
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-10
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -158,10 +148,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-11
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-11
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -173,10 +162,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-12
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-12
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -188,10 +176,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-13
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-13
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -203,10 +190,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-14
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-14
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -218,10 +204,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-15
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-15
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -233,10 +218,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-16
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-16
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -248,10 +232,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-17
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-17
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -263,10 +246,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-18
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-18
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -278,10 +260,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-19
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-19
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -293,10 +274,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-20
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-20
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -308,10 +288,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-21
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-21
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -323,10 +302,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-22
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-22
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -338,10 +316,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-23
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-23
+    
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -353,10 +330,9 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: nfs
-  nfs:
-    path: /srv/mongo-pv-24
-    server: localhost
+  hostPath:
+    path: /home/ubuntu/tsinghua-train-ticket/pv/mongo-pv-24
+    
 ---
 
 # PVCs
@@ -367,7 +343,6 @@ metadata:
   name: ts-user-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -380,7 +355,6 @@ metadata:
   name: ts-auth-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -393,7 +367,6 @@ metadata:
   name: ts-route-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -406,7 +379,6 @@ metadata:
   name: ts-contacts-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -419,7 +391,6 @@ metadata:
   name: ts-order-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -432,7 +403,6 @@ metadata:
   name: ts-order-other-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -445,7 +415,6 @@ metadata:
   name: ts-config-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -458,7 +427,6 @@ metadata:
   name: ts-station-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -471,7 +439,6 @@ metadata:
   name: ts-train-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -484,7 +451,6 @@ metadata:
   name: ts-travel-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -497,7 +463,6 @@ metadata:
   name: ts-travel2-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -510,7 +475,6 @@ metadata:
   name: ts-price-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -523,7 +487,6 @@ metadata:
   name: ts-security-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -536,7 +499,6 @@ metadata:
   name: ts-inside-payment-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -549,7 +511,6 @@ metadata:
   name: ts-payment-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -562,7 +523,6 @@ metadata:
   name: ts-assurance-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -575,7 +535,6 @@ metadata:
   name: ts-ticket-office-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -588,7 +547,6 @@ metadata:
   name: ts-voucher-mysql-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -601,7 +559,6 @@ metadata:
   name: ts-food-map-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -614,7 +571,6 @@ metadata:
   name: ts-consign-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -627,7 +583,6 @@ metadata:
   name: ts-consign-price-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
@@ -640,7 +595,6 @@ metadata:
   name: ts-food-mongo-pvc
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
