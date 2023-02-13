@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ts-ui-dashboard
-        image: docker.peidan.me/lizytalk/ts-ui-dashboard:latest
+        image: localhost:5000/ts-ui-dashboard:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
