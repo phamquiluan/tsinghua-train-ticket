@@ -49,15 +49,13 @@ def emulate_user_behaviour(username, password, threads, main_page, binary_path="
         Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) \
         AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
     )
-    option.add_argument('--headless')  # 取消浏览器的可视化展示
-    option.add_argument('--no-sandbox')  # 禁用沙盒模式
+    option.add_argument('--headless')  # cancel browser's visual display
+    option.add_argument('--no-sandbox')  # disable sandbox mode
     option.add_argument('--disable-dev-shm-usage')
     option.add_argument('blink-settings=imagesEnabled=true')
     option.add_argument('--disable-gpu')
     option.add_argument("service_args = ['–ignore - ssl - errors = true', '–ssl - protocol = TLSv1', '--verbose']")
-    option.add_argument('window-size=1440x900')  # 设置浏览器窗口大小
-    #    option.add_argument('port={}'.format(30007 + int(username[5 : ])))
-    #    option.add_argument('--start-maximized')
+    option.add_argument('window-size=1440x900')  # 
     logger.debug(f"all paths: {PageOperations.paths()}")
 
     def execute():
