@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: ts-avatar-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: ts-avatar-service
-        image: docker.peidan.me/lizytalk/ts-avatar-service:latest
+        image: localhost:5000/ts-avatar-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 17001
@@ -50,7 +50,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-basic-info-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: ts-admin-basic-info-service
-        image: docker.peidan.me/lizytalk/ts-admin-basic-info-service:latest
+        image: localhost:5000/ts-admin-basic-info-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18767
@@ -82,17 +82,16 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 
@@ -106,7 +105,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-order-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -120,7 +119,7 @@ spec:
     spec:
       containers:
       - name: ts-admin-order-service
-        image: docker.peidan.me/lizytalk/ts-admin-order-service:latest
+        image: localhost:5000/ts-admin-order-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16112
@@ -138,17 +137,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -161,7 +160,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-route-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -175,7 +174,7 @@ spec:
     spec:
       containers:
       - name: ts-admin-route-service
-        image: docker.peidan.me/lizytalk/ts-admin-route-service:latest
+        image: localhost:5000/ts-admin-route-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16113
@@ -193,17 +192,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -216,7 +215,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-travel-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -230,7 +229,7 @@ spec:
     spec:
       containers:
       - name: ts-admin-travel-service
-        image: docker.peidan.me/lizytalk/ts-admin-travel-service:latest
+        image: localhost:5000/ts-admin-travel-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16114
@@ -248,17 +247,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -271,7 +270,7 @@ spec:
   selector:
     matchLabels:
       app: ts-admin-user-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -285,7 +284,7 @@ spec:
     spec:
       containers:
       - name: ts-admin-user-service
-        image: docker.peidan.me/lizytalk/ts-admin-user-service:latest
+        image: localhost:5000/ts-admin-user-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16115
@@ -303,17 +302,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -326,7 +325,7 @@ spec:
   selector:
     matchLabels:
       app: ts-assurance-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -340,7 +339,7 @@ spec:
     spec:
       containers:
       - name: ts-assurance-service
-        image: docker.peidan.me/lizytalk/ts-assurance-service:latest
+        image: localhost:5000/ts-assurance-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18888
@@ -358,17 +357,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -381,7 +380,7 @@ spec:
   selector:
     matchLabels:
       app: ts-basic-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -396,7 +395,7 @@ spec:
     spec:
       containers:
       - name: ts-basic-service
-        image: docker.peidan.me/lizytalk/ts-basic-service:latest
+        image: localhost:5000/ts-basic-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15680
@@ -414,17 +413,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -437,7 +436,7 @@ spec:
   selector:
     matchLabels:
       app: ts-cancel-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -451,7 +450,7 @@ spec:
     spec:
       containers:
       - name: ts-cancel-service
-        image: docker.peidan.me/lizytalk/ts-cancel-service:latest
+        image: localhost:5000/ts-cancel-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18885
@@ -469,17 +468,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -492,7 +491,7 @@ spec:
   selector:
     matchLabels:
       app: ts-config-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -507,7 +506,7 @@ spec:
     spec:
       containers:
       - name: ts-config-service
-        image: docker.peidan.me/lizytalk/ts-config-service:latest
+        image: localhost:5000/ts-config-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15679
@@ -525,17 +524,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -548,7 +547,7 @@ spec:
   selector:
     matchLabels:
       app: ts-consign-price-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -562,7 +561,7 @@ spec:
     spec:
       containers:
       - name: ts-consign-price-service
-        image: docker.peidan.me/lizytalk/ts-consign-price-service:latest
+        image: localhost:5000/ts-consign-price-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16110
@@ -580,17 +579,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -603,7 +602,7 @@ spec:
   selector:
     matchLabels:
       app: ts-consign-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -618,7 +617,7 @@ spec:
     spec:
       containers:
       - name: ts-consign-service
-        image: docker.peidan.me/lizytalk/ts-consign-service:latest
+        image: localhost:5000/ts-consign-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16111
@@ -636,17 +635,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -659,7 +658,7 @@ spec:
   selector:
     matchLabels:
       app: ts-contacts-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -674,7 +673,7 @@ spec:
     spec:
       containers:
       - name: ts-contacts-service
-        image: docker.peidan.me/lizytalk/ts-contacts-service:latest
+        image: localhost:5000/ts-contacts-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12347
@@ -692,17 +691,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeM jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzounts:
+      #   - name:y-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -715,7 +714,7 @@ spec:
   selector:
     matchLabels:
       app: ts-execute-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -729,7 +728,7 @@ spec:
     spec:
       containers:
       - name: ts-execute-service
-        image: docker.peidan.me/lizytalk/ts-execute-service:latest
+        image: localhost:5000/ts-execute-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12386
@@ -747,17 +746,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -770,7 +769,7 @@ spec:
   selector:
     matchLabels:
       app: ts-food-map-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -784,7 +783,7 @@ spec:
     spec:
       containers:
       - name: ts-food-map-service
-        image: docker.peidan.me/lizytalk/ts-food-map-service:latest
+        image: localhost:5000/ts-food-map-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18855
@@ -802,17 +801,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -825,7 +824,7 @@ spec:
   selector:
     matchLabels:
       app: ts-food-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -840,7 +839,7 @@ spec:
     spec:
       containers:
       - name: ts-food-service
-        image: docker.peidan.me/lizytalk/ts-food-service:latest
+        image: localhost:5000/ts-food-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18856
@@ -858,17 +857,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -881,7 +880,7 @@ spec:
   selector:
     matchLabels:
       app: ts-inside-payment-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -896,7 +895,7 @@ spec:
     spec:
       containers:
       - name: ts-inside-payment-service
-        image: docker.peidan.me/lizytalk/ts-inside-payment-service:latest
+        image: localhost:5000/ts-inside-payment-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18673
@@ -914,17 +913,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -937,7 +936,7 @@ spec:
   selector:
     matchLabels:
       app: ts-auth-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -952,7 +951,7 @@ spec:
     spec:
       containers:
       - name: ts-auth-service
-        image: docker.peidan.me/lizytalk/ts-auth-service:latest
+        image: localhost:5000/ts-auth-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12340
@@ -970,17 +969,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -993,7 +992,7 @@ spec:
   selector:
     matchLabels:
       app: ts-news-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1006,7 +1005,7 @@ spec:
     spec:
       containers:
       - name: ts-news-service
-        image: docker.peidan.me/lizytalk/ts-news-service:latest
+        image: localhost:5000/ts-news-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12862
@@ -1036,7 +1035,7 @@ spec:
   selector:
     matchLabels:
       app: ts-notification-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1050,7 +1049,7 @@ spec:
     spec:
       containers:
       - name: ts-notification-service
-        image: docker.peidan.me/lizytalk/ts-notification-service:latest
+        image: localhost:5000/ts-notification-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 17853
@@ -1068,17 +1067,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1091,7 +1090,7 @@ spec:
   selector:
     matchLabels:
       app: ts-order-other-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1106,7 +1105,7 @@ spec:
     spec:
       containers:
       - name: ts-order-other-service
-        image: docker.peidan.me/lizytalk/ts-order-other-service:latest
+        image: localhost:5000/ts-order-other-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12032
@@ -1124,17 +1123,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1147,7 +1146,7 @@ spec:
   selector:
     matchLabels:
       app: ts-order-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1162,7 +1161,7 @@ spec:
     spec:
       containers:
       - name: ts-order-service
-        image: docker.peidan.me/lizytalk/ts-order-service:latest
+        image: localhost:5000/ts-order-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12031
@@ -1180,17 +1179,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1203,7 +1202,7 @@ spec:
   selector:
     matchLabels:
       app: ts-payment-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1217,7 +1216,7 @@ spec:
     spec:
       containers:
       - name: ts-payment-service
-        image: docker.peidan.me/lizytalk/ts-payment-service:latest
+        image: localhost:5000/ts-payment-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 19001
@@ -1235,17 +1234,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1258,7 +1257,7 @@ spec:
   selector:
     matchLabels:
       app: ts-preserve-other-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1272,7 +1271,7 @@ spec:
     spec:
       containers:
       - name: ts-preserve-other-service
-        image: docker.peidan.me/lizytalk/ts-preserve-other-service:latest
+        image: localhost:5000/ts-preserve-other-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14569
@@ -1290,17 +1289,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1313,7 +1312,7 @@ spec:
   selector:
     matchLabels:
       app: ts-preserve-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1328,7 +1327,7 @@ spec:
     spec:
       containers:
       - name: ts-preserve-service
-        image: docker.peidan.me/lizytalk/ts-preserve-service:latest
+        image: localhost:5000/ts-preserve-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14568
@@ -1346,17 +1345,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1369,7 +1368,7 @@ spec:
   selector:
     matchLabels:
       app: ts-price-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1384,7 +1383,7 @@ spec:
     spec:
       containers:
       - name: ts-price-service
-        image: docker.peidan.me/lizytalk/ts-price-service:latest
+        image: localhost:5000/ts-price-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16579
@@ -1402,17 +1401,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1425,7 +1424,7 @@ spec:
   selector:
     matchLabels:
       app: ts-rebook-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1439,7 +1438,7 @@ spec:
     spec:
       containers:
       - name: ts-rebook-service
-        image: docker.peidan.me/lizytalk/ts-rebook-service:latest
+        image: localhost:5000/ts-rebook-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18886
@@ -1457,17 +1456,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1480,7 +1479,7 @@ spec:
   selector:
     matchLabels:
       app: ts-route-plan-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1494,7 +1493,7 @@ spec:
     spec:
       containers:
       - name: ts-route-plan-service
-        image: docker.peidan.me/lizytalk/ts-route-plan-service:latest
+        image: localhost:5000/ts-route-plan-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14578
@@ -1512,17 +1511,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1535,7 +1534,7 @@ spec:
   selector:
     matchLabels:
       app: ts-route-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1550,7 +1549,7 @@ spec:
     spec:
       containers:
       - name: ts-route-service
-        image: docker.peidan.me/lizytalk/ts-route-service:latest
+        image: localhost:5000/ts-route-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 11178
@@ -1568,17 +1567,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1591,7 +1590,7 @@ spec:
   selector:
     matchLabels:
       app: ts-seat-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1606,7 +1605,7 @@ spec:
     spec:
       containers:
       - name: ts-seat-service
-        image: docker.peidan.me/lizytalk/ts-seat-service:latest
+        image: localhost:5000/ts-seat-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 18898
@@ -1624,17 +1623,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1647,7 +1646,7 @@ spec:
   selector:
     matchLabels:
       app: ts-security-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1662,7 +1661,7 @@ spec:
     spec:
       containers:
       - name: ts-security-service
-        image: docker.peidan.me/lizytalk/ts-security-service:latest
+        image: localhost:5000/ts-security-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 11188
@@ -1680,17 +1679,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1703,7 +1702,7 @@ spec:
   selector:
     matchLabels:
       app: ts-user-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1717,7 +1716,7 @@ spec:
     spec:
       containers:
       - name: ts-user-service
-        image: docker.peidan.me/lizytalk/ts-user-service:latest
+        image: localhost:5000/ts-user-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12342
@@ -1735,17 +1734,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1758,7 +1757,7 @@ spec:
   selector:
     matchLabels:
       app: ts-station-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1773,7 +1772,7 @@ spec:
     spec:
       containers:
       - name: ts-station-service
-        image: docker.peidan.me/lizytalk/ts-station-service:latest
+        image: localhost:5000/ts-station-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12345
@@ -1791,17 +1790,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1814,7 +1813,7 @@ spec:
   selector:
     matchLabels:
       app: ts-ticket-office-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1827,7 +1826,7 @@ spec:
     spec:
       containers:
       - name: ts-ticket-office-service
-        image: docker.peidan.me/lizytalk/ts-ticket-office-service:latest
+        image: localhost:5000/ts-ticket-office-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16108
@@ -1857,7 +1856,7 @@ spec:
   selector:
     matchLabels:
       app: ts-ticketinfo-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1872,7 +1871,7 @@ spec:
     spec:
       containers:
       - name: ts-ticketinfo-service
-        image: docker.peidan.me/lizytalk/ts-ticketinfo-service:latest
+        image: localhost:5000/ts-ticketinfo-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15681
@@ -1890,17 +1889,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1913,7 +1912,7 @@ spec:
   selector:
     matchLabels:
       app: ts-train-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1927,7 +1926,7 @@ spec:
     spec:
       containers:
       - name: ts-train-service
-        image: docker.peidan.me/lizytalk/ts-train-service:latest
+        image: localhost:5000/ts-train-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14567
@@ -1945,17 +1944,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -1968,7 +1967,7 @@ spec:
   selector:
     matchLabels:
       app: ts-travel2-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -1983,7 +1982,7 @@ spec:
     spec:
       containers:
       - name: ts-travel2-service
-        image: docker.peidan.me/lizytalk/ts-travel2-service:latest
+        image: localhost:5000/ts-travel2-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16346
@@ -2001,17 +2000,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -2024,7 +2023,7 @@ spec:
   selector:
     matchLabels:
       app: ts-travel-plan-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -2038,7 +2037,7 @@ spec:
     spec:
       containers:
       - name: ts-travel-plan-service
-        image: docker.peidan.me/lizytalk/ts-travel-plan-service:latest
+        image: localhost:5000/ts-travel-plan-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 14322
@@ -2056,17 +2055,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -2079,7 +2078,7 @@ spec:
   selector:
     matchLabels:
       app: ts-travel-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -2093,7 +2092,7 @@ spec:
     spec:
       containers:
       - name: ts-travel-service
-        image: docker.peidan.me/lizytalk/ts-travel-service:latest
+        image: localhost:5000/ts-travel-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 12346
@@ -2111,17 +2110,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -2134,7 +2133,7 @@ spec:
   selector:
     matchLabels:
       app: ts-verification-code-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -2148,7 +2147,7 @@ spec:
     spec:
       containers:
       - name: ts-verification-code-service
-        image: docker.peidan.me/lizytalk/ts-verification-code-service:latest
+        image: localhost:5000/ts-verification-code-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 15678
@@ -2166,17 +2165,17 @@ spec:
           initialDelaySeconds: 160
           periodSeconds: 10
           timeoutSeconds: 5
-        volumeMounts:
-        - name: jmx-exporter
-          mountPath: /JMX_exporter
-        env:
-        - name: _JAVA_OPTIONS
-          value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
-      volumes:
-      - name: jmx-exporter
-        nfs:
-          path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
-          server: lzy-k8s-1.cluster.peidan.me
+      #   volumeMounts:
+      #   - name: jmx-exporter
+      #     mountPath: /JMX_exporter
+      #   env:
+      #   - name: _JAVA_OPTIONS
+      #     value: "-javaagent:./JMX_exporter/jmx_prometheus_javaagent-0.16.1.jar=9091:/JMX_exporter/config.yaml"
+      # volumes:
+      # - name: jmx-exporter
+      #   nfs:
+      #     path: /train-ticket/deployment/kubernetes-manifests/k8s-with-jaeger/JMX_exporter
+      #     server: lzy-k8s-1.cluster.peidan.me
 ---
 
 apiVersion: apps/v1
@@ -2189,7 +2188,7 @@ spec:
   selector:
     matchLabels:
       app: ts-voucher-service
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -2202,7 +2201,7 @@ spec:
     spec:
       containers:
       - name: ts-voucher-service
-        image: docker.peidan.me/lizytalk/ts-voucher-service:latest
+        image: localhost:5000/ts-voucher-service:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 16101
